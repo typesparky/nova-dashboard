@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-terminal-bg: #0a0f14;
+  --color-terminal-card: #111820;
+  --color-terminal-border: #1e2a36;
+  --color-neon-green: #00ff88;
+  --color-neon-red: #ff3366;
+  --color-neon-cyan: #00d4ff;
+  --color-neon-yellow: #ffcc00;
+  --color-text-primary: #e0e6ed;
+  --color-text-secondary: #7a8a9e;
+  --color-text-muted: #4a5568;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  background-color: var(--color-terminal-bg);
+  color: var(--color-text-primary);
+  font-size: 12px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Terminal scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-terminal-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-terminal-border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Dense table styling */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--color-terminal-border);
+  white-space: nowrap;
+  font-size: 11px;
+}
+th {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  background: var(--color-terminal-card);
+  z-index: 10;
+}
+
+/* Recharts overrides */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #1e2a36 !important;
+}
+.recharts-text {
+  fill: #7a8a9e !important;
+  font-size: 10px !important;
+}
+
+/* File drag zone */
+.drag-active {
+  border-color: var(--color-neon-cyan) !important;
+  background: rgba(0, 212, 255, 0.05) !important;
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Pulse for live indicators */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-live {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: #fff;
+}
