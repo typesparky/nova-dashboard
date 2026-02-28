@@ -2,23 +2,25 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   Activity, Radio, Zap, Clock, Wifi,
   BarChart3, Newspaper, PieChart, ArrowLeftRight,
-  UserCheck, FolderOpen, ChevronRight
+  UserCheck, FolderOpen, ChevronRight, Target
 } from 'lucide-react';
 import { TAB_LABELS } from './data/mockData';
 import MacroDashboard from './components/MacroDashboard';
 import NewsTerminal from './components/NewsTerminal';
 import CotPositioning from './components/CotPositioning';
 import EtfFlows from './components/EtfFlows';
-import InsiderTracking from './components/InsiderTracking';
+import NasdaqOptions from './components/NasdaqOptions';
 import LocalVault from './components/LocalVault';
+import SectorOverview from './components/SectorOverview';
 
 const TAB_ICONS = {
   macro: BarChart3,
   news: Newspaper,
   cot: PieChart,
   etf: ArrowLeftRight,
-  insider: UserCheck,
+  options: Zap,
   vault: FolderOpen,
+  sector: Target,
 };
 
 const TAB_COMPONENTS = {
@@ -26,8 +28,9 @@ const TAB_COMPONENTS = {
   news: NewsTerminal,
   cot: CotPositioning,
   etf: EtfFlows,
-  insider: InsiderTracking,
+  options: NasdaqOptions,
   vault: LocalVault,
+  sector: SectorOverview,
 };
 
 function useClock() {
@@ -118,7 +121,7 @@ export default function App() {
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key >= 'F1' && e.key <= 'F6') {
+      if (e.key >= 'F1' && e.key <= 'F7') {
         e.preventDefault();
         const idx = parseInt(e.key.slice(1)) - 1;
         if (TAB_LABELS[idx]) {

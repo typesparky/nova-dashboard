@@ -39,6 +39,31 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/coinglass/, ''),
       },
+      // Backend API
+      '/api/cot': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+      '/api/etf': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+      // Nasdaq API
+      '/api/nasdaq': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+      // Short Interest API
+      '/api/short-interest': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      },
+      // CFTC Public Reporting API (Socrata) - Alternative direct proxy
+      '/api/cftc': {
+        target: 'https://publicreporting.cftc.gov',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/cftc/, ''),
+      },
     },
   },
 })

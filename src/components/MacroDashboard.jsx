@@ -9,6 +9,7 @@ import {
     marketNews, timeRanges
 } from '../data/mockData';
 import { useFetch, fetchAllNews, fetchFREDSeries, FRED_SERIES, RSS_FEEDS, classifyNewsCategory, TerminalLoader } from '../data/api';
+import { fetchMacroData } from '../data/mockData';
 
 const CHART_SERIES = Object.keys(macroChartData);
 
@@ -84,6 +85,24 @@ export default function MacroDashboard() {
     const [timeRange, setTimeRange] = useState('1Y');
     const [newsFilter, setNewsFilter] = useState('All');
 
+    const [indicators, setIndicators] = useState({ rates: [], inflation: [], labor: [] });
+    const [indicatorsLoading, setIndicatorsLoading] = useState(true);
+
+    useEffect(() => {
+        const loadIndicators = async () => {
+            setIndicatorsLoading(true);
+            try {
+                const data = await fetchMacroData();
+                setIndicators(data);
+            } catch (error) {
+                console.error("Failed to fetch macro indicators:", error);
+            } finally {
+                setIndicatorsLoading(false);
+            }
+        };
+        loadIndicators();
+    }, []);
+
     // Fetch live news from RSS feeds — refresh every 5 minutes
     const { data: liveNews, isLoading: newsLoading, isError: newsError, refetch: refetchNews } = useFetch(
         () => fetchAllNews(),
@@ -96,13 +115,13 @@ export default function MacroDashboard() {
     const [fredLoading, setFredLoading] = useState(false);
 
     useEffect(() => {
-        const seriesId = FRED_SERIES[activeSeries];
-        if (!seriesId || !import.meta.env.VITE_FRED_API_KEY) {
+        const seriesConfig = FRED_SERIES[activeSeries];
+        if (!seriesConfig || !import.meta.env.VITE_FRED_API_KEY) {
             setFredData(null);
             return;
         }
         setFredLoading(true);
-        fetchFREDSeries(seriesId)
+        fetchFREDSeries(seriesConfig.id, '2019-01-01', seriesConfig.units)
             .then(data => setFredData(data))
             .catch(() => setFredData(null))
             .finally(() => setFredLoading(false));
@@ -225,36 +244,6 @@ export default function MacroDashboard() {
                         )}
                     </div>
 
-                    {/* PCE Component Table */}
-                    <div className="border-t border-terminal-border max-h-[180px] overflow-y-auto">
-                        <div className="px-3 py-1.5 text-[10px] text-text-secondary uppercase tracking-wider border-b border-terminal-border bg-terminal-card">
-                            Core PCE Components — Latest Release
-                        </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Component</th>
-                                    <th>Weight</th>
-                                    <th>Current</th>
-                                    <th>Prior</th>
-                                    <th>Chg</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {corePCEComponents.map(row => (
-                                    <tr key={row.component} className="hover:bg-white/[0.02]">
-                                        <td className="text-text-primary">{row.component}</td>
-                                        <td className="text-text-secondary">{row.weight}</td>
-                                        <td className="text-text-primary font-bold">{row.current}</td>
-                                        <td className="text-text-secondary">{row.prior}</td>
-                                        <td className={row.change === null ? 'text-orange-400/60' : row.change > 0 ? 'text-neon-red' : row.change < 0 ? 'text-neon-green' : 'text-text-muted'}>
-                                            {row.change === null ? '——' : `${row.change > 0 ? '+' : ''}${row.change.toFixed(1)}%`}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
 
                 {/* News Sidebar */}
@@ -326,27 +315,30 @@ export default function MacroDashboard() {
                     <div className="p-2">
                         <div className="text-[9px] text-neon-cyan uppercase tracking-wider mb-1.5 font-bold">Rates</div>
                         <div className="grid grid-cols-2 gap-1.5">
-                            {macroIndicators.rates.map(item => (
-                                <IndicatorCard key={item.label} item={item} />
-                            ))}
+                            {indicatorsLoading ? <div className="text-xs text-text-muted col-span-2">Loading...</div> :
+                                indicators.rates.map(item => (
+                                    <IndicatorCard key={item.label} item={item} />
+                                ))}
                         </div>
                     </div>
                     {/* Inflation */}
                     <div className="p-2">
                         <div className="text-[9px] text-neon-cyan uppercase tracking-wider mb-1.5 font-bold">Inflation</div>
                         <div className="grid grid-cols-2 gap-1.5">
-                            {macroIndicators.inflation.map(item => (
-                                <IndicatorCard key={item.label} item={item} />
-                            ))}
+                            {indicatorsLoading ? <div className="text-xs text-text-muted col-span-2">Loading...</div> :
+                                indicators.inflation.map(item => (
+                                    <IndicatorCard key={item.label} item={item} />
+                                ))}
                         </div>
                     </div>
                     {/* Labor */}
                     <div className="p-2">
                         <div className="text-[9px] text-neon-cyan uppercase tracking-wider mb-1.5 font-bold">Labor</div>
                         <div className="grid grid-cols-2 gap-1.5">
-                            {macroIndicators.labor.map(item => (
-                                <IndicatorCard key={item.label} item={item} />
-                            ))}
+                            {indicatorsLoading ? <div className="text-xs text-text-muted col-span-2">Loading...</div> :
+                                indicators.labor.map(item => (
+                                    <IndicatorCard key={item.label} item={item} />
+                                ))}
                         </div>
                     </div>
                 </div>

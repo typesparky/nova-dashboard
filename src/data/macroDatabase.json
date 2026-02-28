@@ -1,0 +1,48 @@
+{
+  "rates": {
+    "Fed Funds": {
+      "value": "3.75",
+      "change": 0.0
+    },
+    "30Y Mortgage": {
+      "value": "6.17",
+      "change": -0.04
+    }
+  },
+  "inflation": {
+    "CPI YoY": {
+      "value": "2.4",
+      "change": -0.3
+    },
+    "PPI YoY": {
+      "value": "3",
+      "change": 0.0
+    },
+    "Core CPI": {
+      "value": "2.5",
+      "change": -0.1
+    },
+    "PCE YoY": {
+      "value": "2.8",
+      "change": 0.1
+    }
+  },
+  "labor": {
+    "Unemployment": {
+      "value": "4.3",
+      "change": -0.1
+    },
+    "Nonfarm Payrolls": {
+      "value": "130",
+      "change": 82.0
+    },
+    "Avg Hourly Earnings": {
+      "value": "0.4",
+      "change": 0.3
+    },
+    "Initial Claims": {
+      "value": "206",
+      "change": -23.0
+    }
+  }
+}

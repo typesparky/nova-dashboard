@@ -117,10 +117,7 @@ export const fredService = {
 export const cotService = {
   async getCommitmentData(category = 'All') {
     try {
-      const url = category === 'All'
-        ? `${BASE_URL}/cot/data`
-        : `${BASE_URL}/cot/data?category=${category}`;
-
+      const url = `${BASE_URL}/cot/socrata?limit=52&market=13874A`;
       const response = await fetch(url);
       if (!response.ok) throw new Error('Failed to fetch COT data');
       return await response.json();

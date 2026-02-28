@@ -1,0 +1,600 @@
+[
+  {
+    "url": "https://api.nasdaq.com/api/analyst/GXO/earnings-date",
+    "status": 200,
+    "data": {
+      "data": {
+        "reportText": "Our vendor, Zacks Investment Research, hasn't provided us with the upcoming earnings report date.",
+        "heading": "GXO Earnings Date",
+        "announcement": "Earnings announcement* for GXO: ",
+        "eQRResposeModel": {
+          "text": [
+            "GXO has a \"high\" Earnings Quality Ranking (EQR) for the 1st week. Earnings quality refers to the extent to which current earnings predict future earnings. \"High-quality\" earnings are expected to persist, while \"low-quality\" earnings do not. EQR is a weekly ranking of relative earnings quality for a large universe of publicly traded US equities. Companies are compared to peers in their industry. Find out more about EQR data."
+          ],
+          "boldText": null,
+          "dataLinkUrl": {
+            "label": "Find out more about EQR data",
+            "value": "https://data.nasdaq.com/databases/EQR"
+          }
+        }
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/market-info",
+    "status": 200,
+    "data": {
+      "data": {
+        "country": "U.S.",
+        "marketIndicator": "After Hours",
+        "uiMarketIndicator": "After Hours",
+        "marketCountDown": "Market Opens in 15H 20M",
+        "preMarketOpeningTime": "Feb 19, 2026 04:00 AM ET",
+        "preMarketClosingTime": "Feb 19, 2026 09:30 AM ET",
+        "marketOpeningTime": "Feb 19, 2026 09:30 AM ET",
+        "marketClosingTime": "Feb 19, 2026 04:00 PM ET",
+        "afterHoursMarketOpeningTime": "Feb 19, 2026 04:00 PM ET",
+        "afterHoursMarketClosingTime": "Feb 19, 2026 08:00 PM ET",
+        "previousTradeDate": "Feb 18, 2026",
+        "nextTradeDate": "Feb 20, 2026",
+        "isBusinessDay": true,
+        "mrktStatus": "After-Hours",
+        "mrktCountDown": "Opens in 15H 20M",
+        "pmOpenRaw": "2026-02-19T04:00:00",
+        "ahCloseRaw": "2026-02-19T20:00:00",
+        "openRaw": "2026-02-19T09:30:00",
+        "closeRaw": "2026-02-19T16:00:00"
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/GXO/info?assetclass=stocks",
+    "status": 200,
+    "data": {
+      "data": {
+        "symbol": "GXO",
+        "companyName": "GXO Logistics, Inc. Common Stock ",
+        "stockType": "Common Stock",
+        "exchange": "NYSE",
+        "isNasdaqListed": false,
+        "isNasdaq100": false,
+        "isHeld": false,
+        "primaryData": {
+          "lastSalePrice": "$65.00",
+          "netChange": "+0.39",
+          "percentageChange": "+0.60%",
+          "deltaIndicator": "up",
+          "lastTradeTimestamp": "Feb 19, 2026 6:09 PM ET",
+          "isRealTime": true,
+          "bidPrice": "$63.00",
+          "askPrice": "$65.88",
+          "bidSize": "100",
+          "askSize": "30",
+          "volume": "1,089,728",
+          "currency": null
+        },
+        "secondaryData": {
+          "lastSalePrice": "$64.61",
+          "netChange": "-0.80",
+          "percentageChange": "-1.22%",
+          "deltaIndicator": "down",
+          "lastTradeTimestamp": "Closed at Feb 19, 2026 4:00 PM ET",
+          "isRealTime": false,
+          "bidPrice": "",
+          "askPrice": "",
+          "bidSize": "",
+          "askSize": "",
+          "volume": "",
+          "currency": null
+        },
+        "marketStatus": "After-Hours",
+        "assetClass": "STOCKS",
+        "keyStats": {
+          "fiftyTwoWeekHighLow": {
+            "label": "52 Week Range:",
+            "value": "30.46 - 66.85"
+          },
+          "dayrange": {
+            "label": "High/Low:",
+            "value": "63.88 - 65.93"
+          }
+        },
+        "notifications": []
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/GXO/info?assetclass=stocks",
+    "status": 200,
+    "data": {
+      "data": {
+        "symbol": "GXO",
+        "companyName": "GXO Logistics, Inc. Common Stock ",
+        "stockType": "Common Stock",
+        "exchange": "NYSE",
+        "isNasdaqListed": false,
+        "isNasdaq100": false,
+        "isHeld": false,
+        "primaryData": {
+          "lastSalePrice": "$65.00",
+          "netChange": "+0.39",
+          "percentageChange": "+0.60%",
+          "deltaIndicator": "up",
+          "lastTradeTimestamp": "Feb 19, 2026 6:09 PM ET",
+          "isRealTime": true,
+          "bidPrice": "$63.00",
+          "askPrice": "$65.88",
+          "bidSize": "100",
+          "askSize": "30",
+          "volume": "1,089,728",
+          "currency": null
+        },
+        "secondaryData": {
+          "lastSalePrice": "$64.61",
+          "netChange": "-0.80",
+          "percentageChange": "-1.22%",
+          "deltaIndicator": "down",
+          "lastTradeTimestamp": "Closed at Feb 19, 2026 4:00 PM ET",
+          "isRealTime": false,
+          "bidPrice": "",
+          "askPrice": "",
+          "bidSize": "",
+          "askSize": "",
+          "volume": "",
+          "currency": null
+        },
+        "marketStatus": "After-Hours",
+        "assetClass": "STOCKS",
+        "keyStats": {
+          "fiftyTwoWeekHighLow": {
+            "label": "52 Week Range:",
+            "value": "30.46 - 66.85"
+          },
+          "dayrange": {
+            "label": "High/Low:",
+            "value": "63.88 - 65.93"
+          }
+        },
+        "notifications": []
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/GXO/eps",
+    "status": 200,
+    "data": {
+      "data": {
+        "symbol": "gxo",
+        "earningsPerShare": [
+          {
+            "type": "PreviousQuarter",
+            "period": "Mar 2025",
+            "consensus": 0.26,
+            "earnings": 0.29
+          },
+          {
+            "type": "PreviousQuarter",
+            "period": "Jun 2025",
+            "consensus": 0.56,
+            "earnings": 0.57
+          },
+          {
+            "type": "PreviousQuarter",
+            "period": "Sep 2025",
+            "consensus": 0.78,
+            "earnings": 0.79
+          },
+          {
+            "type": "PreviousQuarter",
+            "period": "Dec 2025",
+            "consensus": 0.83,
+            "earnings": 0.87
+          },
+          {
+            "type": "UpcomingQuarter",
+            "period": "Mar 2026",
+            "consensus": 0.44,
+            "earnings": 0.0
+          },
+          {
+            "type": "UpcomingQuarter",
+            "period": "Jun 2026",
+            "consensus": 0.62,
+            "earnings": 0.0
+          },
+          {
+            "type": "UpcomingQuarter",
+            "period": "Sep 2026",
+            "consensus": 0.99,
+            "earnings": 0.0
+          },
+          {
+            "type": "UpcomingQuarter",
+            "period": "Dec 2026",
+            "consensus": 1.06,
+            "earnings": 0.0
+          }
+        ]
+      },
+      "message": {},
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/watchlist?symbol=gxo%7cstocks&type=Rv",
+    "status": 200,
+    "data": {
+      "data": {
+        "asOf": null,
+        "headers": {
+          "symbol": "Symbol",
+          "name": "Name",
+          "lastSale": "Last Sale",
+          "change": "Change",
+          "pctChange": "% Change",
+          "volume": "Share Volume",
+          "actions": "Actions"
+        },
+        "rows": [
+          {
+            "symbol": "GXO",
+            "assetClass": "STOCKS",
+            "name": "GXO Logistics, Inc. Common Stock ",
+            "lastSale": "$65.00",
+            "change": "+0.39",
+            "pctChange": "+0.60%",
+            "volume": "1,334,429",
+            "actions": "true",
+            "url": "/market-activity/stocks/gxo"
+          }
+        ]
+      },
+      "message": {
+        "dataAsOf": "Data as of Feb 19, 2026 06:09 PM ET"
+      },
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/GXO/info?assetclass=stocks",
+    "status": 200,
+    "data": {
+      "data": {
+        "symbol": "GXO",
+        "companyName": "GXO Logistics, Inc. Common Stock ",
+        "stockType": "Common Stock",
+        "exchange": "NYSE",
+        "isNasdaqListed": false,
+        "isNasdaq100": false,
+        "isHeld": false,
+        "primaryData": {
+          "lastSalePrice": "$65.00",
+          "netChange": "+0.39",
+          "percentageChange": "+0.60%",
+          "deltaIndicator": "up",
+          "lastTradeTimestamp": "Feb 19, 2026 6:09 PM ET",
+          "isRealTime": true,
+          "bidPrice": "$63.00",
+          "askPrice": "$65.88",
+          "bidSize": "100",
+          "askSize": "30",
+          "volume": "1,089,728",
+          "currency": null
+        },
+        "secondaryData": {
+          "lastSalePrice": "$64.61",
+          "netChange": "-0.80",
+          "percentageChange": "-1.22%",
+          "deltaIndicator": "down",
+          "lastTradeTimestamp": "Closed at Feb 19, 2026 4:00 PM ET",
+          "isRealTime": false,
+          "bidPrice": "",
+          "askPrice": "",
+          "bidSize": "",
+          "askSize": "",
+          "volume": "",
+          "currency": null
+        },
+        "marketStatus": "After-Hours",
+        "assetClass": "STOCKS",
+        "keyStats": {
+          "fiftyTwoWeekHighLow": {
+            "label": "52 Week Range:",
+            "value": "30.46 - 66.85"
+          },
+          "dayrange": {
+            "label": "High/Low:",
+            "value": "63.88 - 65.93"
+          }
+        },
+        "notifications": []
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/GXO/info?assetclass=stocks",
+    "status": 200,
+    "data": {
+      "data": {
+        "symbol": "GXO",
+        "companyName": "GXO Logistics, Inc. Common Stock ",
+        "stockType": "Common Stock",
+        "exchange": "NYSE",
+        "isNasdaqListed": false,
+        "isNasdaq100": false,
+        "isHeld": false,
+        "primaryData": {
+          "lastSalePrice": "$65.00",
+          "netChange": "+0.39",
+          "percentageChange": "+0.60%",
+          "deltaIndicator": "up",
+          "lastTradeTimestamp": "Feb 19, 2026 6:09 PM ET",
+          "isRealTime": true,
+          "bidPrice": "$63.00",
+          "askPrice": "$65.88",
+          "bidSize": "100",
+          "askSize": "30",
+          "volume": "1,089,728",
+          "currency": null
+        },
+        "secondaryData": {
+          "lastSalePrice": "$64.61",
+          "netChange": "-0.80",
+          "percentageChange": "-1.22%",
+          "deltaIndicator": "down",
+          "lastTradeTimestamp": "Closed at Feb 19, 2026 4:00 PM ET",
+          "isRealTime": false,
+          "bidPrice": "",
+          "askPrice": "",
+          "bidSize": "",
+          "askSize": "",
+          "volume": "",
+          "currency": null
+        },
+        "marketStatus": "After-Hours",
+        "assetClass": "STOCKS",
+        "keyStats": {
+          "fiftyTwoWeekHighLow": {
+            "label": "52 Week Range:",
+            "value": "30.46 - 66.85"
+          },
+          "dayrange": {
+            "label": "High/Low:",
+            "value": "63.88 - 65.93"
+          }
+        },
+        "notifications": []
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/GXO/info?assetclass=stocks",
+    "status": 200,
+    "data": {
+      "data": {
+        "symbol": "GXO",
+        "companyName": "GXO Logistics, Inc. Common Stock ",
+        "stockType": "Common Stock",
+        "exchange": "NYSE",
+        "isNasdaqListed": false,
+        "isNasdaq100": false,
+        "isHeld": false,
+        "primaryData": {
+          "lastSalePrice": "$65.00",
+          "netChange": "+0.39",
+          "percentageChange": "+0.60%",
+          "deltaIndicator": "up",
+          "lastTradeTimestamp": "Feb 19, 2026 6:09 PM ET",
+          "isRealTime": true,
+          "bidPrice": "$63.00",
+          "askPrice": "$65.88",
+          "bidSize": "100",
+          "askSize": "30",
+          "volume": "1,089,728",
+          "currency": null
+        },
+        "secondaryData": {
+          "lastSalePrice": "$64.61",
+          "netChange": "-0.80",
+          "percentageChange": "-1.22%",
+          "deltaIndicator": "down",
+          "lastTradeTimestamp": "Closed at Feb 19, 2026 4:00 PM ET",
+          "isRealTime": false,
+          "bidPrice": "",
+          "askPrice": "",
+          "bidSize": "",
+          "askSize": "",
+          "volume": "",
+          "currency": null
+        },
+        "marketStatus": "After-Hours",
+        "assetClass": "STOCKS",
+        "keyStats": {
+          "fiftyTwoWeekHighLow": {
+            "label": "52 Week Range:",
+            "value": "30.46 - 66.85"
+          },
+          "dayrange": {
+            "label": "High/Low:",
+            "value": "63.88 - 65.93"
+          }
+        },
+        "notifications": []
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/GXO/info?assetclass=stocks",
+    "status": 200,
+    "data": {
+      "data": {
+        "symbol": "GXO",
+        "companyName": "GXO Logistics, Inc. Common Stock ",
+        "stockType": "Common Stock",
+        "exchange": "NYSE",
+        "isNasdaqListed": false,
+        "isNasdaq100": false,
+        "isHeld": false,
+        "primaryData": {
+          "lastSalePrice": "$65.00",
+          "netChange": "+0.39",
+          "percentageChange": "+0.60%",
+          "deltaIndicator": "up",
+          "lastTradeTimestamp": "Feb 19, 2026 6:09 PM ET",
+          "isRealTime": true,
+          "bidPrice": "$63.00",
+          "askPrice": "$65.88",
+          "bidSize": "100",
+          "askSize": "30",
+          "volume": "1,089,728",
+          "currency": null
+        },
+        "secondaryData": {
+          "lastSalePrice": "$64.61",
+          "netChange": "-0.80",
+          "percentageChange": "-1.22%",
+          "deltaIndicator": "down",
+          "lastTradeTimestamp": "Closed at Feb 19, 2026 4:00 PM ET",
+          "isRealTime": false,
+          "bidPrice": "",
+          "askPrice": "",
+          "bidSize": "",
+          "askSize": "",
+          "volume": "",
+          "currency": null
+        },
+        "marketStatus": "After-Hours",
+        "assetClass": "STOCKS",
+        "keyStats": {
+          "fiftyTwoWeekHighLow": {
+            "label": "52 Week Range:",
+            "value": "30.46 - 66.85"
+          },
+          "dayrange": {
+            "label": "High/Low:",
+            "value": "63.88 - 65.93"
+          }
+        },
+        "notifications": []
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  },
+  {
+    "url": "https://api.nasdaq.com/api/quote/GXO/info?assetclass=stocks",
+    "status": 200,
+    "data": {
+      "data": {
+        "symbol": "GXO",
+        "companyName": "GXO Logistics, Inc. Common Stock ",
+        "stockType": "Common Stock",
+        "exchange": "NYSE",
+        "isNasdaqListed": false,
+        "isNasdaq100": false,
+        "isHeld": false,
+        "primaryData": {
+          "lastSalePrice": "$65.00",
+          "netChange": "+0.39",
+          "percentageChange": "+0.60%",
+          "deltaIndicator": "up",
+          "lastTradeTimestamp": "Feb 19, 2026 6:09 PM ET",
+          "isRealTime": true,
+          "bidPrice": "$63.00",
+          "askPrice": "$65.88",
+          "bidSize": "100",
+          "askSize": "30",
+          "volume": "1,089,728",
+          "currency": null
+        },
+        "secondaryData": {
+          "lastSalePrice": "$64.61",
+          "netChange": "-0.80",
+          "percentageChange": "-1.22%",
+          "deltaIndicator": "down",
+          "lastTradeTimestamp": "Closed at Feb 19, 2026 4:00 PM ET",
+          "isRealTime": false,
+          "bidPrice": "",
+          "askPrice": "",
+          "bidSize": "",
+          "askSize": "",
+          "volume": "",
+          "currency": null
+        },
+        "marketStatus": "After-Hours",
+        "assetClass": "STOCKS",
+        "keyStats": {
+          "fiftyTwoWeekHighLow": {
+            "label": "52 Week Range:",
+            "value": "30.46 - 66.85"
+          },
+          "dayrange": {
+            "label": "High/Low:",
+            "value": "63.88 - 65.93"
+          }
+        },
+        "notifications": []
+      },
+      "message": null,
+      "status": {
+        "rCode": 200,
+        "bCodeMessage": null,
+        "developerMessage": null
+      }
+    }
+  }
+]

@@ -231,13 +231,13 @@ export async function fetchAllNews() {
  * @param {string} seriesId - FRED series ID (e.g., 'CPIAUCSL', 'FEDFUNDS')
  * @param {string} startDate - Start date in YYYY-MM-DD format
  */
-export async function fetchFREDSeries(seriesId, startDate = '2019-01-01') {
+export async function fetchFREDSeries(seriesId, startDate = '2019-01-01', units = 'lin') {
     const apiKey = import.meta.env.VITE_FRED_API_KEY;
     if (!apiKey) {
         throw new Error('FRED API key not configured. Set VITE_FRED_API_KEY in .env');
     }
 
-    const url = `/api/fred/fred/series/observations?series_id=${seriesId}&api_key=${apiKey}&file_type=json&observation_start=${startDate}&sort_order=asc`;
+    const url = `/api/fred/fred/series/observations?series_id=${seriesId}&api_key=${apiKey}&file_type=json&observation_start=${startDate}&sort_order=asc&units=${units}`;
     const res = await fetch(url);
     if (!res.ok) throw new Error(`FRED API returned ${res.status}`);
     const json = await res.json();
@@ -253,13 +253,80 @@ export async function fetchFREDSeries(seriesId, startDate = '2019-01-01') {
 }
 
 // FRED series ID mapping for the macro dashboard
+// units: 'pc1' = YoY percent change, 'lin' = raw value (already %)
 export const FRED_SERIES = {
-    'CPI YoY': 'CPIAUCSL',         // Consumer Price Index
-    'Fed Funds Rate': 'FEDFUNDS',   // Federal Funds Effective Rate
-    'Core PCE': 'PCEPILFE',         // PCE excluding Food & Energy (YoY)
-    '10Y Treasury': 'DGS10',        // 10-Year Treasury Constant Maturity
-    'Unemployment': 'UNRATE',       // Civilian Unemployment Rate
+    'CPI YoY': { id: 'CPIAUCSL', units: 'pc1' },          // CPI → YoY % change
+    'Fed Funds Rate': { id: 'FEDFUNDS', units: 'lin' },     // Already in %
+    'Core PCE': { id: 'PCEPILFE', units: 'pc1' },           // PCE → YoY % change
+    '10Y Treasury': { id: 'DGS10', units: 'lin' },          // Already in %
+    'Unemployment': { id: 'UNRATE', units: 'lin' },          // Already in %
 };
+
+/**
+ * Fetch COT (Commitment of Traders) data from CFTC Socrata API
+ * @param {string} contractCode - CFTC contract code
+ * @param {number} limit - Number of reports to fetch (default 52 for 1 year)
+ */
+export async function fetchCOTSeries(contractCode, limit = 52) {
+    // Using the clean backend endpoint I just implemented in server.js
+    const url = `/api/cot/socrata?limit=${limit}&market=${contractCode}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`COT API returned ${res.status}`);
+    const data = await res.json();
+
+    return data.filter(d => d.report_date_as_yyyy_mm_dd).map(d => {
+        const parse = (val) => {
+            const num = parseInt(val);
+            return isNaN(num) ? 0 : num;
+        };
+        const parseF = (val) => {
+            const num = parseFloat(val);
+            return isNaN(num) ? 0 : num;
+        };
+
+        const ncLong = parse(d.noncomm_positions_long_all);
+        const ncShort = parse(d.noncomm_positions_short_all);
+        const cLong = parse(d.comm_positions_long_all);
+        const cShort = parse(d.comm_positions_short_all);
+
+        return {
+            date: d.report_date_as_yyyy_mm_dd.split('T')[0],
+            asset: d.contract_market_name || d.commodity_name || 'Unknown',
+            openInterest: parse(d.open_interest_all),
+            nonCommLong: ncLong,
+            nonCommShort: ncShort,
+            nonCommSpread: parse(d.noncomm_postions_spread_all || d.noncomm_positions_spread || d.noncomm_positions_spread_all || 0),
+            commLong: cLong,
+            commShort: cShort,
+            netNonComm: ncLong - ncShort,
+            netComm: cLong - cShort,
+            changeNonCommLong: parse(d.change_in_noncomm_long_all || 0),
+            changeNonCommShort: parse(d.change_in_noncomm_short_all || 0),
+            pctOINonCommLong: parseF(d.pct_of_oi_noncomm_long_all || 0),
+            pctOINonCommShort: parseF(d.pct_of_oi_noncomm_short_all || 0),
+        };
+    });
+}
+
+// Comprehensive COT Assets mapping
+export const COT_ASSETS = [
+    { id: '13874A', label: 'S&P 500 (E-Mini)', category: 'Indices' },
+    { id: '209742', label: 'Nasdaq 100 (Mini)', category: 'Indices' },
+    { id: '12460A', label: 'Dow Jones (Mini)', category: 'Indices' },
+    { id: '239742', label: 'Russell 2000 (Mini)', category: 'Indices' },
+    { id: '088691', label: 'Gold', category: 'Metals' },
+    { id: '084691', label: 'Silver', category: 'Metals' },
+    { id: '06765A', label: 'Crude Oil (WTI)', category: 'Energies' },
+    { id: '023391', label: 'Natural Gas', category: 'Energies' },
+    { id: '099741', label: 'Euro FX', category: 'Currencies' },
+    { id: '096742', label: 'British Pound', category: 'Currencies' },
+    { id: '097741', label: 'Japanese Yen', category: 'Currencies' },
+    { id: '098662', label: 'U.S. Dollar Index', category: 'Currencies' },
+    { id: '043602', label: '10Y Treasury Note', category: 'Financials' },
+    { id: '042601', label: '2Y Treasury Note', category: 'Financials' },
+    { id: '045601', label: 'Fed Funds', category: 'Financials' },
+    { id: '133741', label: 'Bitcoin', category: 'Crypto' },
+];
 
 /**
  * Fetch CoinGlass ETF flow data (requires API key)

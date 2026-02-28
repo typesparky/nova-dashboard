@@ -5,6 +5,7 @@
 // ═══════════════════════════════════════════════════════════════════════════════
 
 import { etfService, fredService, cotService, eurostatService } from '../services/dataServices';
+import etfDatabase from './etfDatabase.json';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 export const etfIssuers = ['IBIT', 'FBTC', 'GBTC', 'ARKB', 'BITB', 'HODL', 'ETHA', 'EFCT', 'SOLH'];
@@ -76,8 +77,11 @@ export const insiderTrades = [];
 //  ASYNC FETCH FUNCTIONS — try backend, return empty on failure (no fake data)
 // ═══════════════════════════════════════════════════════════════════════════════
 
+import realMacroData from './macroDatabase.json';
+
 export const fetchMacroData = async () => {
   try {
+    // Check if backend FRED is available 
     const [fedRate, cpi, tenYield, unemployment] = await Promise.all([
       fredService.getFederalFundsRate(),
       fredService.getCpiYoY(),
@@ -108,8 +112,39 @@ export const fetchMacroData = async () => {
       ],
     };
   } catch (error) {
-    console.warn('[NO DATA] Backend offline — showing empty state');
-    return macroIndicators;
+    console.warn('[USING SCRAPED DATA] Backend offline — using offline macro scraper results.');
+
+    const getVal = (cat, name, isPerc = true) => {
+      const item = realMacroData[cat]?.[name];
+      if (!item) return { value: '——', change: null, unit: isPerc ? '%' : '', isMock: true };
+      return {
+        value: item.value,
+        change: item.change,
+        unit: isPerc ? '%' : (name.includes('Payrolls') || name.includes('Claims') ? 'K' : 'bps'),
+        isMock: false
+      };
+    };
+
+    return {
+      rates: [
+        { label: 'Fed Funds', ...getVal('rates', 'Fed Funds') },
+        { label: '10Y Treasury', ...getVal('rates', '10Y Treasury') },
+        { label: '10Y-2Y Spread', ...getVal('rates', '10Y-2Y Spread') },
+        { label: '30Y Mortgage', ...getVal('rates', '30Y Mortgage') },
+      ],
+      inflation: [
+        { label: 'CPI YoY', ...getVal('inflation', 'CPI YoY') },
+        { label: 'PPI YoY', ...getVal('inflation', 'PPI YoY') },
+        { label: 'PCE YoY', ...getVal('inflation', 'PCE YoY') },
+        { label: 'Core CPI', ...getVal('inflation', 'Core CPI') },
+      ],
+      labor: [
+        { label: 'Unemployment', ...getVal('labor', 'Unemployment') },
+        { label: 'Nonfarm Payrolls', ...getVal('labor', 'Nonfarm Payrolls', false) },
+        { label: 'Avg Hourly Earnings', ...getVal('labor', 'Avg Hourly Earnings') },
+        { label: 'Initial Claims', ...getVal('labor', 'Initial Claims', false) },
+      ],
+    };
   }
 };
 
@@ -126,25 +161,36 @@ export const fetchCotData = async (category = 'All') => {
   }
 };
 
-export const fetchEtfFlows = async (days = 30, source = 'auto') => {
+export const fetchEtfFlows = async (ticker = 'IBIT', days = 30, source = 'auto') => {
   try {
-    const data = await etfService.getEtfFlows('IBIT', days, source);
+    const data = await etfService.getEtfFlows(ticker, days, source);
     if (!data || !data.chartData || data.chartData.length === 0) throw new Error('No ETF data');
 
     const issuers = ['IBIT', 'FBTC', 'GBTC', 'ARKB', 'BITB', 'HODL', 'ETHA', 'EFCT', 'SOLH'];
-    const chartData = data.chartData;
-    return { chartData, issuers, sourceUsed: data.sourceUsed };
+    return { chartData: data.chartData, issuers, sourceUsed: data.sourceUsed, summary: data.summary };
   } catch (error) {
-    console.warn('[NO DATA] ETF Flows — needs backend with pixel extraction');
-    return { chartData: [], issuers: etfIssuers, sourceUsed: 'auto' };
+    console.warn(`[NO DATA] ETF Flows for ${ticker} — needs backend with pixel extraction`);
+    return { chartData: [], issuers: ['IBIT', 'FBTC', 'GBTC', 'ARKB', 'BITB', 'HODL', 'ETHA', 'EFCT', 'SOLH'], sourceUsed: 'auto' };
   }
 };
 
-export const fetchEtfSummary = async () => {
+export const fetchEtfIndex = async (source = 'crypto') => {
   try {
-    const summary = await etfService.getEtfSummary();
-    const flows = await etfService.getSpotEtfFlows();
-    return { ...summary, spotFlows: flows };
+    return await etfService.getEtfIndex(source);
+  } catch (error) {
+    console.warn('[NO DATA] ETF Index — needs backend');
+    return [];
+  }
+};
+
+export const fetchEtfDatabase = () => {
+  return etfDatabase;
+};
+
+export const fetchEtfSummary = async (source = 'auto') => {
+  try {
+    const summary = await etfService.getEtfSummary('IBIT', source);
+    return summary;
   } catch (error) {
     console.warn('[NO DATA] ETF Summary — needs backend');
     return null;
@@ -182,6 +228,7 @@ export const TAB_LABELS = [
   { id: 'news', label: 'NEWS', shortcut: 'F2' },
   { id: 'cot', label: 'COT', shortcut: 'F3' },
   { id: 'etf', label: 'ETF FLOWS', shortcut: 'F4' },
-  { id: 'insider', label: 'INSIDER', shortcut: 'F5' },
+  { id: 'options', label: 'OPTIONS', shortcut: 'F5' },
   { id: 'vault', label: 'VAULT', shortcut: 'F6' },
+  { id: 'sector', label: 'SECTOR', shortcut: 'F7' },
 ];
