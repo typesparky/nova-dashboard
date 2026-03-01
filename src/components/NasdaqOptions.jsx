@@ -25,7 +25,16 @@ export default function NasdaqOptions() {
 
         try {
             const res = await fetch(`/api/nasdaq/${tab}/${window.encodeURIComponent(symbol)}`);
-            const result = await res.json();
+
+            // Handle non-JSON responses (e.g. proxy failure, backend not running)
+            let result;
+            try {
+                result = await res.json();
+            } catch (parseErr) {
+                throw new Error(
+                    'Backend server is not reachable. Make sure the Express server is running on port 3000 (run: node server.js)'
+                );
+            }
 
             if (!res.ok || !result.success) {
                 throw new Error(result.error || result.details || `Failed to fetch ${tab} data`);
@@ -71,15 +80,15 @@ export default function NasdaqOptions() {
                                 <th className="px-2 py-2 text-right text-neon-green/80 font-normal">CHANGE</th>
                                 <th className="px-2 py-2 text-right text-neon-green/80 font-normal">BID</th>
                                 <th className="px-2 py-2 text-right text-neon-green/80 font-normal">ASK</th>
+                                <th className="px-2 py-2 text-right text-neon-green/80 font-normal">VOL</th>
+                                <th className="px-2 py-2 text-right text-neon-green/80 font-normal border-r border-terminal-border">OI</th>
                                 <th className="px-2 py-2 text-center text-neon-cyan/80 bg-neon-cyan/5 font-semibold border-x border-terminal-border">STRIKE</th>
-                                <th className="px-2 py-2 text-left text-orange-400/80 font-normal">LAST</th>
+                                <th className="px-2 py-2 text-left text-orange-400/80 font-normal border-l border-terminal-border">LAST</th>
                                 <th className="px-2 py-2 text-left text-orange-400/80 font-normal">CHANGE</th>
                                 <th className="px-2 py-2 text-left text-orange-400/80 font-normal">BID</th>
                                 <th className="px-2 py-2 text-left text-orange-400/80 font-normal">ASK</th>
-                                <th className="px-2 py-2 text-right font-normal">C VOL</th>
-                                <th className="px-2 py-2 text-right font-normal">C OPEN</th>
-                                <th className="px-2 py-2 text-left font-normal border-l border-terminal-border pl-4">P VOL</th>
-                                <th className="px-2 py-2 text-left font-normal">P OPEN</th>
+                                <th className="px-2 py-2 text-left text-orange-400/80 font-normal">VOL</th>
+                                <th className="px-2 py-2 text-left text-orange-400/80 font-normal">OI</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -92,22 +101,20 @@ export default function NasdaqOptions() {
                                     </td>
                                     <td className="px-2 py-1.5 text-right text-text-secondary">{row.calls.bid}</td>
                                     <td className="px-2 py-1.5 text-right text-text-secondary">{row.calls.ask}</td>
+                                    <td className="px-2 py-1.5 text-right text-text-secondary whitespace-nowrap">{row.calls.volume}</td>
+                                    <td className="px-2 py-1.5 text-right text-text-muted border-r border-terminal-border">{row.calls.openInterest}</td>
 
                                     <td className="px-2 py-1.5 text-center text-neon-cyan font-bold bg-neon-cyan/5 border-x border-terminal-border">
                                         {row.strike}
                                     </td>
 
-                                    <td className="px-2 py-1.5 text-left text-orange-500">{row.puts.last}</td>
+                                    <td className="px-2 py-1.5 text-left text-orange-500 border-l border-terminal-border">{row.puts.last}</td>
                                     <td className={`px-2 py-1.5 text-left ${row.puts.change.includes('-') ? 'text-neon-red' : 'text-neon-green'}`}>
                                         {row.puts.change !== '--' ? row.puts.change : '-'}
                                     </td>
                                     <td className="px-2 py-1.5 text-left text-text-secondary">{row.puts.bid}</td>
                                     <td className="px-2 py-1.5 text-left text-text-secondary">{row.puts.ask}</td>
-
-                                    <td className="px-2 py-1.5 text-right text-text-secondary whitespace-nowrap">{row.calls.volume}</td>
-                                    <td className="px-2 py-1.5 text-right text-text-muted">{row.calls.openInterest}</td>
-
-                                    <td className="px-2 py-1.5 text-left text-text-secondary border-l border-terminal-border pl-4">{row.puts.volume}</td>
+                                    <td className="px-2 py-1.5 text-left text-text-secondary whitespace-nowrap">{row.puts.volume}</td>
                                     <td className="px-2 py-1.5 text-left text-text-muted">{row.puts.openInterest}</td>
                                 </tr>
                             ))}
