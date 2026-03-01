@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Activity, AlertTriangle, RefreshCw, BarChart2, ShieldAlert, Database } from 'lucide-react';
+import cachedData from '../data/shortInterestData.json';
 
 export default function SectorOverview() {
     const [shortData, setShortData] = useState([]);
@@ -19,7 +20,13 @@ export default function SectorOverview() {
             // Guard against empty / non-JSON responses (DB offline)
             const text = await res.text();
             if (!text || text.trim() === '') {
-                setLoadState('idle');
+                // Fall back to cached local data
+                if (cachedData && cachedData.length > 0) {
+                    setShortData(cachedData);
+                    setLoadState('done');
+                } else {
+                    setLoadState('idle');
+                }
                 return;
             }
 
@@ -27,7 +34,12 @@ export default function SectorOverview() {
             try {
                 json = JSON.parse(text);
             } catch {
-                setLoadState('idle');
+                if (cachedData && cachedData.length > 0) {
+                    setShortData(cachedData);
+                    setLoadState('done');
+                } else {
+                    setLoadState('idle');
+                }
                 return;
             }
 
@@ -37,12 +49,23 @@ export default function SectorOverview() {
             } else if (json.error) {
                 throw new Error(json.error);
             } else {
-                // Success but empty DB — show idle prompt
-                setLoadState('idle');
+                // Success but empty DB — fall back to cached
+                if (cachedData && cachedData.length > 0) {
+                    setShortData(cachedData);
+                    setLoadState('done');
+                } else {
+                    setLoadState('idle');
+                }
             }
         } catch (err) {
-            setError(err.message);
-            setLoadState('error');
+            // On any error, try local cache first
+            if (cachedData && cachedData.length > 0) {
+                setShortData(cachedData);
+                setLoadState('done');
+            } else {
+                setError(err.message);
+                setLoadState('error');
+            }
         }
     };
 

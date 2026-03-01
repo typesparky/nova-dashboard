@@ -1,0 +1,402 @@
+[
+  {
+    "ticker": "GRPN",
+    "company": "Groupon Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "46.06%",
+    "float": "23.39M",
+    "target": "40.75M"
+  },
+  {
+    "ticker": "HTZ",
+    "company": "Hertz Global Holdings Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "44.41%",
+    "float": "124.38M",
+    "target": "311.59M"
+  },
+  {
+    "ticker": "BETR",
+    "company": "Better Home & Finance Holding Company",
+    "exchange": "Nasdaq",
+    "shortInterest": "43.93%",
+    "float": "4.17M",
+    "target": "9.86M"
+  },
+  {
+    "ticker": "MPT",
+    "company": "Medical Properties Trust Inc",
+    "exchange": "NYSE",
+    "shortInterest": "40.06%",
+    "float": "494.23M",
+    "target": "601.50M"
+  },
+  {
+    "ticker": "HIMS",
+    "company": "Hims & Hers Health, Inc.",
+    "exchange": "NYSE",
+    "shortInterest": "35.71%",
+    "float": "206.02M",
+    "target": "219.27M"
+  },
+  {
+    "ticker": "AI",
+    "company": "C3.ai Inc",
+    "exchange": "NYSE",
+    "shortInterest": "34.98%",
+    "float": "120.90M",
+    "target": "137.25M"
+  },
+  {
+    "ticker": "IOVA",
+    "company": "Iovance Biotherapeutics Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "34.61%",
+    "float": "338.65M",
+    "target": "396.97M"
+  },
+  {
+    "ticker": "LCID",
+    "company": "Lucid Group, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "34.10%",
+    "float": "130.35M",
+    "target": "324.17M"
+  },
+  {
+    "ticker": "PCT",
+    "company": "Purecycle Technologies Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "32.96%",
+    "float": "141.90M",
+    "target": "180.20M"
+  },
+  {
+    "ticker": "BOXL",
+    "company": "Boxlight Corporation",
+    "exchange": "Nasdaq",
+    "shortInterest": "32.71%",
+    "float": "930K",
+    "target": "950K"
+  },
+  {
+    "ticker": "RXRX",
+    "company": "Recursion Pharmaceuticals, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "32.69%",
+    "float": "504.41M",
+    "target": "514.19M"
+  },
+  {
+    "ticker": "NVAX",
+    "company": "Novavax Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "32.61%",
+    "float": "163.70M",
+    "target": "163.50M"
+  },
+  {
+    "ticker": "SUGP",
+    "company": "SU Group Holdings Limited",
+    "exchange": "Nasdaq",
+    "shortInterest": "32.46%",
+    "float": "500K",
+    "target": "560K"
+  },
+  {
+    "ticker": "SOUN",
+    "company": "SoundHound AI Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "31.74%",
+    "float": "379.22M",
+    "target": "387.56M"
+  },
+  {
+    "ticker": "SPHR",
+    "company": "Sphere Entertainment Co.",
+    "exchange": "NYSE",
+    "shortInterest": "29.98%",
+    "float": "24.21M",
+    "target": "28.45M"
+  },
+  {
+    "ticker": "MARA",
+    "company": "MARA Holdings, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "28.85%",
+    "float": "372.62M",
+    "target": "378.18M"
+  },
+  {
+    "ticker": "PLCE",
+    "company": "The Children's Place, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "28.71%",
+    "float": "9.20M",
+    "target": "22.17M"
+  },
+  {
+    "ticker": "SPRY",
+    "company": "ARS Pharmaceuticals Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "28.70%",
+    "float": "70.41M",
+    "target": "98.85M"
+  },
+  {
+    "ticker": "ENVX",
+    "company": "Enovix Corp",
+    "exchange": "Nasdaq",
+    "shortInterest": "28.63%",
+    "float": "186.49M",
+    "target": "215.82M"
+  },
+  {
+    "ticker": "ROOT",
+    "company": "Root Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "27.37%",
+    "float": "8.55M",
+    "target": "13.70M"
+  },
+  {
+    "ticker": "CRML",
+    "company": "Critical Metals Corp.",
+    "exchange": "Nasdaq",
+    "shortInterest": "27.36%",
+    "float": "49.38M",
+    "target": "117.90M"
+  },
+  {
+    "ticker": "RILY",
+    "company": "B Riley Financial Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "27.22%",
+    "float": "20.68M",
+    "target": "31.22M"
+  },
+  {
+    "ticker": "ABSI",
+    "company": "Absci Corporation",
+    "exchange": "Nasdaq",
+    "shortInterest": "27.13%",
+    "float": "137.64M",
+    "target": "150.37M"
+  },
+  {
+    "ticker": "KSS",
+    "company": "Kohl's Corporation",
+    "exchange": "NYSE",
+    "shortInterest": "27.06%",
+    "float": "111.08M",
+    "target": "112.19M"
+  },
+  {
+    "ticker": "ACHC",
+    "company": "Acadia Healthcare Company, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "26.98%",
+    "float": "82.34M",
+    "target": "90.44M"
+  },
+  {
+    "ticker": "LFVN",
+    "company": "LifeVantage Corporation",
+    "exchange": "Nasdaq",
+    "shortInterest": "26.70%",
+    "float": "10.46M",
+    "target": "12.79M"
+  },
+  {
+    "ticker": "RUN",
+    "company": "Sunrun Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "26.69%",
+    "float": "212.51M",
+    "target": "232.04M"
+  },
+  {
+    "ticker": "HYPD",
+    "company": "Hyperion DeFi, Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "26.19%",
+    "float": "6.43M",
+    "target": "8.17M"
+  },
+  {
+    "ticker": "CRDF",
+    "company": "Cardiff Oncology, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "26.19%",
+    "float": "65.73M",
+    "target": "67.36M"
+  },
+  {
+    "ticker": "MNPR",
+    "company": "Monopar Therapeutics Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "26.16%",
+    "float": "4.73M",
+    "target": "6.68M"
+  },
+  {
+    "ticker": "OMER",
+    "company": "Omeros Corporation",
+    "exchange": "Nasdaq",
+    "shortInterest": "25.85%",
+    "float": "63.23M",
+    "target": "70.90M"
+  },
+  {
+    "ticker": "EOSE",
+    "company": "Eos Energy Enterprises Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "25.64%",
+    "float": "299.83M",
+    "target": "324.10M"
+  },
+  {
+    "ticker": "FUN",
+    "company": "Six Flags Entertainment Corporation",
+    "exchange": "NYSE",
+    "shortInterest": "25.57%",
+    "float": "90.20M",
+    "target": "101.47M"
+  },
+  {
+    "ticker": "INDI",
+    "company": "indie Semiconductor, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "25.53%",
+    "float": "199.75M",
+    "target": "202.61M"
+  },
+  {
+    "ticker": "KRUS",
+    "company": "Kura Sushi USA Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "25.49%",
+    "float": "6.78M",
+    "target": "11.11M"
+  },
+  {
+    "ticker": "PLUG",
+    "company": "Plug Power Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "25.18%",
+    "float": "1.38B",
+    "target": "1.39B"
+  },
+  {
+    "ticker": "TTEC",
+    "company": "TTEC Holdings, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "25.05%",
+    "float": "20.14M",
+    "target": "48.55M"
+  },
+  {
+    "ticker": "WGS",
+    "company": "GeneDx Holdings Corp.",
+    "exchange": "Nasdaq",
+    "shortInterest": "24.94%",
+    "float": "14.71M",
+    "target": "28.90M"
+  },
+  {
+    "ticker": "SERV",
+    "company": "Serve Robotics Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "24.88%",
+    "float": "62.01M",
+    "target": "74.52M"
+  },
+  {
+    "ticker": "EVGO",
+    "company": "Evgo Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "24.64%",
+    "float": "127.65M",
+    "target": "135.18M"
+  },
+  {
+    "ticker": "AIRS",
+    "company": "AirSculpt Technologies, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "24.41%",
+    "float": "17.05M",
+    "target": "62.44M"
+  },
+  {
+    "ticker": "BCRX",
+    "company": "BioCryst Pharmaceuticals, Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "23.96%",
+    "float": "195.47M",
+    "target": "248.04M"
+  },
+  {
+    "ticker": "ASPI",
+    "company": "ASP Isotopes Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "23.85%",
+    "float": "88.08M",
+    "target": "125.11M"
+  },
+  {
+    "ticker": "PGY",
+    "company": "Pagaya Technologies Ltd.",
+    "exchange": "Nasdaq",
+    "shortInterest": "23.84%",
+    "float": "46.78M",
+    "target": "69.11M"
+  },
+  {
+    "ticker": "SANA",
+    "company": "Sana Biotechnology Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "23.76%",
+    "float": "156.96M",
+    "target": "266.37M"
+  },
+  {
+    "ticker": "BBAI",
+    "company": "BigBear.ai Holdings, Inc.",
+    "exchange": "NYSE",
+    "shortInterest": "23.50%",
+    "float": "433.34M",
+    "target": "457.89M"
+  },
+  {
+    "ticker": "STOK",
+    "company": "Stoke Therapeutics Inc",
+    "exchange": "Nasdaq",
+    "shortInterest": "23.47%",
+    "float": "40.85M",
+    "target": "57.12M"
+  },
+  {
+    "ticker": "BYRN",
+    "company": "Byrna Technologies Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "23.34%",
+    "float": "18.48M",
+    "target": "22.37M"
+  },
+  {
+    "ticker": "ABCL",
+    "company": "AbCellera Biologics Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "23.19%",
+    "float": "204.33M",
+    "target": "299.34M"
+  },
+  {
+    "ticker": "CRMD",
+    "company": "CorMedix Inc.",
+    "exchange": "Nasdaq",
+    "shortInterest": "22.94%",
+    "float": "78.14M",
+    "target": "78.79M"
+  }
+]
