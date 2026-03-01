@@ -67,16 +67,16 @@ function Header({ time }) {
         <div className="flex items-center gap-1.5 text-text-secondary">
           <Activity size={10} />
           <span className="text-orange-400/60">SPX ——</span>
-          <span className="text-orange-400/40 text-[9px]">MOCK</span>
+          <span className="text-orange-400/40 text-[9px]">NO FEED</span>
         </div>
         <div className="flex items-center gap-1.5 text-text-secondary">
           <Radio size={10} />
           <span className="text-orange-400/60">DXY ——</span>
-          <span className="text-orange-400/40 text-[9px]">MOCK</span>
+          <span className="text-orange-400/40 text-[9px]">NO FEED</span>
         </div>
         <div className="flex items-center gap-1.5 text-text-secondary">
           <span className="text-orange-400/60">VIX ——</span>
-          <span className="text-orange-400/40 text-[9px]">MOCK</span>
+          <span className="text-orange-400/40 text-[9px]">NO FEED</span>
         </div>
       </div>
 
@@ -196,8 +196,6 @@ export default function App() {
           <span>Latency: 12ms</span>
         </div>
         <div className="flex items-center gap-4">
-          <span>Mock Data Mode</span>
-          <span>|</span>
           <span>F1-F6: Switch Tabs</span>
           <span>|</span>
           <span>© 2024 Nova Capital</span>

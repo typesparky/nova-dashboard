@@ -188,7 +188,6 @@ export default function MacroDashboard() {
                         </div>
                         <div className="flex items-center gap-1">
                             {fredData && <span className="text-[8px] text-neon-green mr-2">FRED API</span>}
-                            {!fredData && <span className="text-[8px] text-text-muted mr-2">MOCK</span>}
                             {timeRanges.map(t => (
                                 <button
                                     key={t}
@@ -301,7 +300,7 @@ export default function MacroDashboard() {
                         <span>
                             {isLiveNews
                                 ? `Sources: CNBC RSS × ${Object.keys(RSS_FEEDS).length} feeds`
-                                : 'Using mock data — configure proxy for live feeds'
+                                : 'No live news — configure RSS proxy'
                             }
                         </span>
                     </div>

@@ -56,6 +56,10 @@ export default function EtfFlows() {
   const [dataLoading, setDataLoading] = useState(false);
   const [sourceUsed, setSourceUsed] = useState('');
   const [error, setError] = useState(null);
+  const [tradfiRequested, setTradfiRequested] = useState(false);
+
+  const CRYPTO_TICKERS = ['IBIT', 'FBTC', 'GBTC', 'ARKB', 'BITB', 'HODL', 'ETHA', 'EFCT', 'SOLH'];
+  const isCryptoTicker = (t) => CRYPTO_TICKERS.includes(t?.toUpperCase());
 
   // Database Explorer State
   const [etfDb, setEtfDb] = useState({});
@@ -142,13 +146,17 @@ export default function EtfFlows() {
   // 3. Trigger load on selection changes
   useEffect(() => {
     if (activeTab === 'tracked' && selectedTicker) {
-      loadFlowData(selectedTicker, viewDays);
+      // Crypto ETFs auto-load, TradFi needs explicit request
+      if (isCryptoTicker(selectedTicker)) {
+        loadFlowData(selectedTicker, viewDays);
+      }
     }
   }, [selectedTicker, viewDays, activeTab, loadFlowData]);
 
   const handleTickerSelect = (ticker) => {
     setSelectedTicker(ticker);
-    setActiveTab('tracked'); // Switch to main tracker view when a ticker is selected from DB
+    setTradfiRequested(false); // reset on ticker change
+    setActiveTab('tracked');
   };
 
   if (loading) {
@@ -222,10 +230,10 @@ export default function EtfFlows() {
             <div className="flex flex-col gap-3">
               <div className="flex flex-wrap items-center gap-1.5 align-middle">
                 <span className="text-[10px] text-neon-cyan font-bold tracking-widest uppercase font-mono mr-2">CRYPTO_ETFS:</span>
-                {['IBIT', 'FBTC', 'GBTC', 'ARKB', 'BITB', 'HODL', 'ETHA', 'EFCT', 'SOLH'].map((ticker) => (
+                {CRYPTO_TICKERS.map((ticker) => (
                   <button
                     key={ticker}
-                    onClick={() => setSelectedTicker(ticker)}
+                    onClick={() => handleTickerSelect(ticker)}
                     className={`text-[10px] px-3 py-1.5 rounded transition-all font-mono font-bold ${selectedTicker.toUpperCase() === ticker
                       ? 'bg-neon-cyan/20 text-neon-cyan border border-neon-cyan/40 shadow-[0_0_15px_rgba(0,212,255,0.1)]'
                       : 'bg-terminal-bg text-text-muted border border-terminal-border hover:border-text-muted hover:text-text-primary'
@@ -240,7 +248,7 @@ export default function EtfFlows() {
                 {['SPY', 'QQQ', 'DIA', 'IWM', 'TLT', 'GLD', 'ARKK', 'VTI'].map((ticker) => (
                   <button
                     key={ticker}
-                    onClick={() => setSelectedTicker(ticker)}
+                    onClick={() => handleTickerSelect(ticker)}
                     className={`text-[10px] px-3 py-1.5 rounded transition-all font-mono font-bold ${selectedTicker.toUpperCase() === ticker
                       ? 'bg-neon-green/20 text-neon-green border border-neon-green/40 shadow-[0_0_15px_rgba(0,255,100,0.1)]'
                       : 'bg-terminal-bg text-text-muted border border-terminal-border hover:border-text-muted hover:text-text-primary'
@@ -249,9 +257,20 @@ export default function EtfFlows() {
                     {ticker}
                   </button>
                 ))}
-                {selectedTicker && !['IBIT', 'FBTC', 'GBTC', 'ARKB', 'BITB', 'HODL', 'ETHA', 'EFCT', 'SOLH', 'SPY', 'QQQ', 'DIA', 'IWM', 'TLT', 'GLD', 'ARKK', 'VTI'].includes(selectedTicker) && (
+                {/* REQUEST DATA button for TradFi tickers */}
+                {selectedTicker && !isCryptoTicker(selectedTicker) && !tradfiRequested && (
                   <button
-                    onClick={() => setSelectedTicker(selectedTicker)}
+                    onClick={() => { setTradfiRequested(true); handleSingleScrape(); }}
+                    disabled={dataLoading}
+                    className="ml-3 text-[10px] px-4 py-1.5 rounded font-mono font-bold bg-neon-green/10 text-neon-green border border-neon-green/40 hover:bg-neon-green/20 transition-all flex items-center gap-1.5 disabled:opacity-50"
+                  >
+                    <RefreshCw size={10} className={dataLoading ? 'animate-spin' : ''} />
+                    REQUEST DATA
+                  </button>
+                )}
+                {selectedTicker && !isCryptoTicker(selectedTicker) && !['IBIT', 'FBTC', 'GBTC', 'ARKB', 'BITB', 'HODL', 'ETHA', 'EFCT', 'SOLH', 'SPY', 'QQQ', 'DIA', 'IWM', 'TLT', 'GLD', 'ARKK', 'VTI'].includes(selectedTicker) && (
+                  <button
+                    onClick={() => handleTickerSelect(selectedTicker)}
                     className="text-[10px] px-3 py-1.5 rounded transition-all font-mono font-bold bg-white/10 text-white border border-white/40 shadow-[0_0_15px_rgba(255,255,255,0.1)] ml-2"
                   >
                     {selectedTicker} (CUSTOM)
@@ -271,33 +290,33 @@ export default function EtfFlows() {
             <SummaryCard
               icon={Bitcoin}
               label="Cumulative BTC Flow"
-              value={summaryData?.totalBtcFlow ? `${(summaryData.totalBtcFlow / 1000).toFixed(1)}K` : '842.2K'}
-              subValue="ETB Market Dominance: 4.82%"
+              value={summaryData?.totalBtcFlow ? `${(summaryData.totalBtcFlow / 1000).toFixed(1)}K` : '---'}
+              subValue="BTC Market Dominance"
             />
             <SummaryCard
               icon={TrendingUp}
               label="Weekly Net Inflow"
-              value={summaryData?.sevenDayNetFlow ? `$${summaryData.sevenDayNetFlow}M` : '+$1,244M'}
+              value={summaryData?.sevenDayNetFlow ? `$${summaryData.sevenDayNetFlow}M` : '---'}
               color="text-neon-green"
-              subValue="SENTIMENT: EXTREME_BULLISH"
+              subValue="7-Day Net Flow"
             />
             <SummaryCard
               icon={Award}
               label="Top Accumulator"
-              value={summaryData?.topAccumulator || 'IBIT'}
-              subValue={summaryData?.topAccumulatorFlow || '+$842M IN 24H'}
+              value={summaryData?.topAccumulator || '---'}
+              subValue={summaryData?.topAccumulatorFlow || '---'}
             />
             <SummaryCard
               icon={Wallet}
               label="ETH ETF Holdings"
-              value={summaryData?.totalEthHeld ? `${(summaryData.totalEthHeld / 1000).toFixed(1)}K` : '1,250K'}
-              subValue={summaryData?.totalEthValue || '$3.8B AUM'}
+              value={summaryData?.totalEthHeld ? `${(summaryData.totalEthHeld / 1000).toFixed(1)}K` : '---'}
+              subValue={summaryData?.totalEthValue || '---'}
             />
             <SummaryCard
               icon={TrendingDown}
               label="Largest Sell-off"
-              value="GBTC"
-              subValue="OUTFLOW_RATE: ACCELERATING"
+              value={summaryData?.largestSelloff || '---'}
+              subValue={summaryData?.selloffRate || '---'}
               color="text-neon-red"
             />
           </div>

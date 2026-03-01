@@ -230,5 +230,5 @@ export const TAB_LABELS = [
   { id: 'etf', label: 'ETF FLOWS', shortcut: 'F4' },
   { id: 'options', label: 'OPTIONS', shortcut: 'F5' },
   { id: 'vault', label: 'VAULT', shortcut: 'F6' },
-  { id: 'sector', label: 'SECTOR', shortcut: 'F7' },
+  { id: 'sector', label: 'MOST SHORTED', shortcut: 'F7' },
 ];

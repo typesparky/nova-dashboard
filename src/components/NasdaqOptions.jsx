@@ -1,14 +1,15 @@
 
-import React, { useState, useEffect } from 'react';
-import { Search, Loader2, Zap, AlertTriangle, RefreshCcw, LayoutTemplate, RefreshCw, AlertCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, Loader2, Zap, LayoutTemplate, RefreshCw, AlertCircle, MousePointerClick } from 'lucide-react';
 
 export default function NasdaqOptions() {
-    const [tickerInput, setTickerInput] = useState('GXO');
-    const [activeTicker, setActiveTicker] = useState('GXO');
-    const [activeTab, setActiveTab] = useState('options'); // 'options', 'earnings', 'financials'
+    const [tickerInput, setTickerInput] = useState('');
+    const [activeTicker, setActiveTicker] = useState(null);
+    const [activeTab, setActiveTab] = useState('options'); // 'options', 'earnings', 'institutional', 'financials'
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
+    const [hasRequested, setHasRequested] = useState(false);
 
     const TABS = [
         { id: 'options', label: 'Options Chain' },
@@ -39,14 +40,20 @@ export default function NasdaqOptions() {
         }
     };
 
-    useEffect(() => {
-        fetchData(activeTicker, activeTab);
-    }, [activeTicker, activeTab]);
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (tickerInput.trim()) {
-            setActiveTicker(tickerInput.trim().toUpperCase());
+        const ticker = tickerInput.trim().toUpperCase();
+        if (!ticker) return;
+        setActiveTicker(ticker);
+        setHasRequested(true);
+        fetchData(ticker, activeTab);
+    };
+
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+        // Re-fetch for the new tab if we already have a ticker loaded
+        if (hasRequested && activeTicker) {
+            fetchData(activeTicker, tab);
         }
     };
 
@@ -122,7 +129,7 @@ export default function NasdaqOptions() {
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="flex gap-2 p-1 bg-terminal-card border border-terminal-border rounded-md w-[320px]">
+                <form onSubmit={handleSubmit} className="flex gap-2 p-1 bg-terminal-card border border-terminal-border rounded-md w-[420px]">
                     <div className="flex items-center px-3 text-text-muted">
                         <Search size={14} />
                     </div>
@@ -130,15 +137,16 @@ export default function NasdaqOptions() {
                         type="text"
                         value={tickerInput}
                         onChange={(e) => setTickerInput(e.target.value.toUpperCase())}
-                        placeholder="Enter ticker (e.g. TSLA)"
+                        placeholder="Enter ticker symbol (e.g. AAPL, TSLA, NVDA)"
                         className="flex-1 bg-transparent border-none outline-none text-sm text-text-primary placeholder:text-text-muted uppercase"
                     />
                     <button
                         type="submit"
-                        disabled={isLoading}
-                        className="px-4 py-1.5 bg-terminal-bg hover:bg-white/5 border border-terminal-border rounded text-sm font-medium transition-colors disabled:opacity-50"
+                        disabled={isLoading || !tickerInput.trim()}
+                        className="px-4 py-1.5 bg-neon-cyan/10 hover:bg-neon-cyan/20 border border-neon-cyan/30 text-neon-cyan rounded text-[11px] font-bold uppercase tracking-wider transition-colors disabled:opacity-40 flex items-center gap-1.5 whitespace-nowrap"
                     >
-                        {isLoading ? <Loader2 size={16} className="animate-spin" /> : 'FETCH'}
+                        {isLoading ? <Loader2 size={14} className="animate-spin" /> : <MousePointerClick size={13} />}
+                        {isLoading ? 'Scraping...' : 'REQUEST DATA'}
                     </button>
                 </form>
             </div>
@@ -150,7 +158,7 @@ export default function NasdaqOptions() {
                     {TABS.map(tab => (
                         <button
                             key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
+                            onClick={() => handleTabChange(tab.id)}
                             className={`flex-1 py-1.5 px-4 text-xs font-mono transition-colors ${activeTab === tab.id
                                 ? 'bg-blue-600/20 text-blue-400 border border-blue-500/30'
                                 : 'text-gray-500 hover:text-gray-300 hover:bg-gray-800/50 border border-transparent'
@@ -160,6 +168,32 @@ export default function NasdaqOptions() {
                         </button>
                     ))}
                 </div>
+
+                {/* Idle state — show before first request */}
+                {!hasRequested && !isLoading && (
+                    <div className="flex flex-col items-center justify-center flex-1 gap-5 text-center pb-12">
+                        <div className="w-16 h-16 rounded-full bg-neon-cyan/5 border border-neon-cyan/20 flex items-center justify-center">
+                            <Search size={28} className="text-neon-cyan opacity-40" />
+                        </div>
+                        <div>
+                            <div className="text-sm font-bold text-text-primary uppercase tracking-widest mb-2">
+                                Enter a Ticker to Begin
+                            </div>
+                            <div className="text-[10px] text-text-muted font-mono leading-relaxed max-w-sm">
+                                Type a stock symbol above and press{' '}
+                                <span className="text-neon-cyan font-bold">REQUEST DATA</span>{' '}
+                                to scrape live options chain, institutional flows, and earnings data from Nasdaq.
+                            </div>
+                        </div>
+                        <div className="flex gap-3 text-[9px] text-text-muted font-mono uppercase tracking-widest opacity-60">
+                            <span>Options Chain</span>
+                            <span>•</span>
+                            <span>Institutional Flows</span>
+                            <span>•</span>
+                            <span>Earnings &amp; EPS</span>
+                        </div>
+                    </div>
+                )}
 
                 {isLoading && (
                     <div className="flex flex-col items-center justify-center p-12 text-gray-500 font-mono text-sm space-y-4">
