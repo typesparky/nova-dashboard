@@ -2,7 +2,7 @@
 
 ## 📋 Overview
 
-Successfully updated the UrbanKaoberg dashboard to implement a **dual-source ETF data architecture** with optimized performance and comprehensive coverage.
+Successfully updated the Nova Capital dashboard to implement a **dual-source ETF data architecture** with optimized performance and comprehensive coverage.
 
 ## 🎯 Architecture Evolution
 
@@ -256,5 +256,5 @@ const traditionalFlows = await fetchEtfFlows(30, 'TSLA');
 **Status**: ✅ Production Ready
 **Version**: 2.0.0 (Dual Source Architecture)
 **Integration Date**: February 2026
-**Project**: UrbanKaoberg Dashboard - Nova Capital
+**Project**: Nova Capital Dashboard - Nova Capital
 **Integration Type**: Advanced ETF Source Architecture

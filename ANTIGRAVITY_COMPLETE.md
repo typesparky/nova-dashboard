@@ -1,4 +1,4 @@
-# 🚀 Antigravity Integration Complete - UrbanKaoberg Dashboard
+# 🚀 Antigravity Integration Complete - Nova Capital Dashboard
 
 ## 📋 Executive Summary
 
@@ -132,7 +132,7 @@ GET /api/etf/flows?source=farside&ticker=IBIT
 ## 📁 Project Structure
 
 ```
-urbankaoberg/
+nova-dashboard/
 ├── server.js                          # Main backend API
 ├── server_etf_index.js               # ETF index service
 ├── src/
@@ -260,5 +260,5 @@ npm run dev
 **Status**: ✅ Production Ready
 **Version**: 1.0.0
 **Integration Date**: February 2026
-**Project**: UrbanKaoberg Dashboard - Nova Capital
+**Project**: Nova Capital Dashboard - Nova Capital
 **Integration Type**: Python → React Migration with Advanced Scraping

@@ -55,7 +55,7 @@ function Header({ time }) {
           <span className="text-neon-cyan font-bold text-sm tracking-wider">NOVA CAPITAL</span>
         </div>
         <span className="text-text-muted text-[10px]">|</span>
-        <span className="text-text-secondary text-[10px] uppercase tracking-widest">UrbanKaoberg Terminal v1.0</span>
+        <span className="text-text-secondary text-[10px] uppercase tracking-widest">Nova Capital Terminal v1.0</span>
       </div>
 
       {/* Center: Market Status */}

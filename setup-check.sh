@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "UrbanKaoberg Dashboard - Setup Verification Script"
+echo "Nova Capital Dashboard - Setup Verification Script"
 echo "=================================================="
 echo ""
 

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-//  UrbanKaoberg — ETF Categorical Database
+//  Nova Capital — ETF Categorical Database
 //  Static data parsed from user input for Industry Flows / Factors.
 // ═══════════════════════════════════════════════════════════════════════════════
 

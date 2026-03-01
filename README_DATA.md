@@ -1,4 +1,4 @@
-# UrbanKaoberg Dashboard - Data Integration Complete
+# Nova Capital Dashboard - Data Integration Complete
 
 ## What Was Added
 

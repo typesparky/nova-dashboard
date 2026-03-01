@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-//  UrbanKaoberg — Data Layer
+//  Nova Capital — Data Layer
 //  NO FAKE DATA. Only real API calls or empty states.
 //  Empty = "not yet wired" → components show clear missing-data indicators.
 // ═══════════════════════════════════════════════════════════════════════════════

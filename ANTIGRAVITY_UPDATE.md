@@ -1,4 +1,4 @@
-# 🚀 Antigravity Update - UrbanKaoberg Dashboard Integration
+# 🚀 Antigravity Update - Nova Capital Dashboard Integration
 
 ## 📋 Summary
 
@@ -124,7 +124,7 @@ if (barClass.includes('highcharts-negative')) {
 ## 📁 Project Structure
 
 ```
-urbankaoberg/
+nova-dashboard/
 ├── server.js                          # Backend API server
 ├── server_etf_index.js               # ETF index service
 ├── src/
@@ -257,4 +257,4 @@ npm run dev
 **Status**: ✅ Production Ready
 **Version**: 1.0.0
 **Integration Date**: February 2026
-**Project**: UrbanKaoberg Dashboard - Nova Capital
+**Project**: Nova Capital Dashboard - Nova Capital

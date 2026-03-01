@@ -6,7 +6,7 @@
 
 **1. Install Dependencies**
 ```bash
-cd /Users/robertalexandrou/.gemini/antigravity/scratch/urbankaoberg
+cd /Users/robertalexandrou/.gemini/antigravity/scratch/nova-dashboard
 npm install express cors axios
 ```
 

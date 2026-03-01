@@ -1,4 +1,4 @@
-# UrbanKaoberg Dashboard - Setup Instructions
+# Nova Capital Dashboard - Setup Instructions
 
 ## Overview
 
@@ -215,7 +215,7 @@ Add data codes to the `EUROSTAT_DATACODES` array in `server.js`.
 ## Project Structure
 
 ```
-urbankaoberg/
+nova-dashboard/
 ├── server.js              # Backend API server
 ├── src/
 │   ├── components/        # React components

@@ -1,5 +1,5 @@
 // ============================================================================
-// API / Data Fetching — UrbanKaoberg
+// API / Data Fetching — Nova Capital
 // Live data integration: RSS feeds, FRED API, with mock fallbacks
 // ============================================================================
 
@@ -30,7 +30,7 @@ export function useFetch(fetchFn, deps = [], refreshInterval = 0) {
         } catch (err) {
             setIsError(true);
             setErrorMsg(`[SYS ERR] ${err.message || 'Connection timeout'}`);
-            console.error('[UrbanKaoberg] Fetch error:', err);
+            console.error('[Nova Capital] Fetch error:', err);
         } finally {
             setIsLoading(false);
         }

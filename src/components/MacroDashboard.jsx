@@ -82,7 +82,8 @@ function NewsItem({ item }) {
 }
 
 export default function MacroDashboard() {
-    const [activeSeries, setActiveSeries] = useState('CPI YoY');
+    const [selectedEvent, setSelectedEvent] = useState(null); // { event: {}, seriesKey: string }
+    const [activeSeries, setActiveSeries] = useState('CPI YoY'); // Fallback if no event selected
     const [timeRange, setTimeRange] = useState('1Y');
     const [newsFilter, setNewsFilter] = useState('All');
 
@@ -143,14 +144,15 @@ export default function MacroDashboard() {
 
     // Use FRED data if available, otherwise fall back to mock
     const chartData = useMemo(() => {
-        const source = fredData || macroChartData[activeSeries] || [];
+        const currentSeries = selectedEvent ? selectedEvent.seriesKey : activeSeries;
+        const source = fredData || macroChartData[currentSeries] || [];
         const now = new Date();
         const rangeMap = { '1M': 30, '3M': 90, '6M': 180, '1Y': 365, '5Y': 1825 };
         const days = rangeMap[timeRange] || 365;
         const cutoff = new Date(now);
         cutoff.setDate(cutoff.getDate() - days);
         return source.filter(d => new Date(d.date) >= cutoff);
-    }, [activeSeries, timeRange, fredData]);
+    }, [activeSeries, selectedEvent, timeRange, fredData]);
 
     const filteredNews = useMemo(() => {
         if (newsFilter === 'All') return newsData;
@@ -162,88 +164,112 @@ export default function MacroDashboard() {
         return ['All', ...Array.from(cats).sort()];
     }, [newsData]);
 
+    const handleEventClick = (event, seriesKey) => {
+        setActiveSeries(seriesKey);
+        setSelectedEvent({ event, seriesKey });
+    };
+
     return (
         <div className="h-full flex flex-col overflow-hidden">
             {/* Top: Chart + News Sidebar */}
             <div className="flex-1 flex min-h-0">
-                {/* Main Chart Area */}
+                {/* Main View Area */}
                 <div className="flex-1 flex flex-col min-w-0">
-                    {/* Chart Header */}
-                    <div className="flex items-center justify-between px-3 py-2 border-b border-terminal-border">
-                        <div className="flex items-center gap-2">
-                            {CHART_SERIES.map(s => (
-                                <button
-                                    key={s}
-                                    onClick={() => setActiveSeries(s)}
-                                    className={`text-[10px] px-2 py-1 rounded transition-colors ${activeSeries === s
-                                        ? 'bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30'
-                                        : 'text-text-secondary hover:text-text-primary border border-transparent'
-                                        }`}
-                                >
-                                    {s}
-                                    {fredData && activeSeries === s && (
-                                        <span className="ml-1 text-[8px] text-neon-green">LIVE</span>
-                                    )}
-                                </button>
-                            ))}
+                    {!selectedEvent ? (
+                        // 1. Expanded Economic Calendar View
+                        <div className="flex-1 p-0 min-h-0 bg-terminal-card/10">
+                            <EconomicCalendar
+                                onEventClick={handleEventClick}
+                                selectedEventId={selectedEvent?.event?.id}
+                            />
                         </div>
-                        <div className="flex items-center gap-1">
-                            {fredData && <span className="text-[8px] text-neon-green mr-2">FRED API</span>}
-                            {timeRanges.map(t => (
-                                <button
-                                    key={t}
-                                    onClick={() => setTimeRange(t)}
-                                    className={`text-[10px] px-2 py-0.5 rounded transition-colors ${timeRange === t
-                                        ? 'bg-white/10 text-text-primary'
-                                        : 'text-text-muted hover:text-text-secondary'
-                                        }`}
-                                >
-                                    {t}
-                                </button>
-                            ))}
+                    ) : (
+                        // 2. Drill-down Chart View
+                        <div className="flex-1 flex flex-col min-h-0">
+                            {/* Chart Header */}
+                            <div className="flex items-center justify-between px-4 py-2 bg-terminal-card border-b border-terminal-border shadow-sm">
+                                <div className="flex items-center gap-4">
+                                    <button
+                                        onClick={() => setSelectedEvent(null)}
+                                        className="text-[10px] flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-terminal-border text-text-muted hover:text-white hover:bg-white/10 hover:border-white/30 rounded transition-all font-bold uppercase tracking-widest"
+                                    >
+                                        ← Back to Calendar
+                                    </button>
+                                    <div className="flex flex-col">
+                                        <div className="text-xs font-black text-neon-cyan flex items-center gap-2">
+                                            {selectedEvent.seriesKey}
+                                            {fredData && <span className="text-[8px] px-1.5 py-0.5 rounded bg-neon-green/10 text-neon-green border border-neon-green/30 uppercase tracking-widest">Live FRED API</span>}
+                                        </div>
+                                        <div className="text-[10px] text-text-muted">
+                                            {selectedEvent.event.name} • {selectedEvent.event.period}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-1 bg-black/40 p-1 rounded border border-terminal-border">
+                                    {timeRanges.map(t => (
+                                        <button
+                                            key={t}
+                                            onClick={() => setTimeRange(t)}
+                                            className={`text-[9px] font-bold px-2.5 py-1 rounded transition-colors ${timeRange === t
+                                                ? 'bg-neon-cyan text-black'
+                                                : 'text-text-muted hover:text-white hover:bg-white/10'
+                                                }`}
+                                        >
+                                            {t}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Chart Area */}
+                            <div className="flex-1 p-4 min-h-0 bg-terminal-bg relative">
+                                {fredLoading ? (
+                                    <div className="absolute inset-0 flex items-center justify-center bg-terminal-bg/80 z-10">
+                                        <TerminalLoader label="FETCHING FRED DATA" />
+                                    </div>
+                                ) : null}
+                                <ResponsiveContainer width="100%" height="100%">
+                                    <LineChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 5 }}>
+                                        <CartesianGrid strokeDasharray="3 3" stroke="#1e2a36" vertical={false} />
+                                        <XAxis
+                                            dataKey="date"
+                                            stroke="#4a5568"
+                                            tick={{ fontSize: 9, fill: '#7a8a9e', fontWeight: 'bold' }}
+                                            tickFormatter={v => {
+                                                const d = new Date(v);
+                                                return `${d.getMonth() + 1}/${d.getFullYear().toString().slice(2)}`;
+                                            }}
+                                            interval="preserveStartEnd"
+                                            minTickGap={50}
+                                            tickMargin={10}
+                                            axisLine={false}
+                                            tickLine={false}
+                                        />
+                                        <YAxis
+                                            stroke="#4a5568"
+                                            tick={{ fontSize: 9, fill: '#7a8a9e', fontWeight: 'bold' }}
+                                            tickFormatter={v => `${v.toFixed(1)}%`}
+                                            width={45}
+                                            axisLine={false}
+                                            tickLine={false}
+                                            domain={['auto', 'auto']}
+                                        />
+                                        <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#4a5568', strokeWidth: 1, strokeDasharray: '4 4' }} />
+                                        <ReferenceLine y={0} stroke="#4a5568" strokeDasharray="3 3" />
+                                        <Line
+                                            type="monotone"
+                                            dataKey="value"
+                                            stroke="#00d4ff"
+                                            strokeWidth={2}
+                                            dot={false}
+                                            activeDot={{ r: 4, fill: '#00d4ff', stroke: '#080d12', strokeWidth: 2 }}
+                                            animationDuration={500}
+                                        />
+                                    </LineChart>
+                                </ResponsiveContainer>
+                            </div>
                         </div>
-                    </div>
-
-                    {/* Chart */}
-                    <div className="flex-1 p-2 min-h-0">
-                        {fredLoading ? (
-                            <TerminalLoader label="FETCHING FRED DATA" />
-                        ) : (
-                            <ResponsiveContainer width="100%" height="100%">
-                                <LineChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#1e2a36" />
-                                    <XAxis
-                                        dataKey="date"
-                                        stroke="#4a5568"
-                                        tick={{ fontSize: 9, fill: '#7a8a9e' }}
-                                        tickFormatter={v => {
-                                            const d = new Date(v);
-                                            return `${d.getMonth() + 1}/${d.getFullYear().toString().slice(2)}`;
-                                        }}
-                                        interval="preserveStartEnd"
-                                        minTickGap={40}
-                                    />
-                                    <YAxis
-                                        stroke="#4a5568"
-                                        tick={{ fontSize: 9, fill: '#7a8a9e' }}
-                                        tickFormatter={v => `${v.toFixed(1)}%`}
-                                        width={50}
-                                    />
-                                    <Tooltip content={<CustomTooltip />} />
-                                    <ReferenceLine y={0} stroke="#4a5568" strokeDasharray="3 3" />
-                                    <Line
-                                        type="monotone"
-                                        dataKey="value"
-                                        stroke="#00d4ff"
-                                        strokeWidth={1.5}
-                                        dot={false}
-                                        activeDot={{ r: 3, fill: '#00d4ff' }}
-                                    />
-                                </LineChart>
-                            </ResponsiveContainer>
-                        )}
-                    </div>
-
+                    )}
                 </div>
 
                 {/* News Sidebar + Calendar */}
@@ -304,11 +330,6 @@ export default function MacroDashboard() {
                                 : 'No live news — configure RSS proxy'
                             }
                         </span>
-                    </div>
-
-                    {/* Economic Calendar panel — bottom 40% of sidebar */}
-                    <div className="h-[240px] flex-none border-t-2 border-neon-cyan/20 bg-terminal-card/20">
-                        <EconomicCalendar />
                     </div>
                 </div>
             </div>

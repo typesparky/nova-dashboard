@@ -10,7 +10,7 @@
 
 **Audience**: Retail traders, quant-curious investors, macro practitioners who want Bloomberg-tier data without the Bloomberg price tag.
 
-**Tagline**: *UrbanKaoberg Terminal V1.0 — Professional-grade market intelligence at zero cost.*
+**Tagline**: *Nova Capital Terminal V1.0 — Professional-grade market intelligence at zero cost.*
 
 ---
 
