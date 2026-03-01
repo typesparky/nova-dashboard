@@ -1,11 +1,19 @@
 {
   "rates": {
     "Fed Funds": {
-      "value": "3.75",
+      "value": "4.33",
       "change": 0.0
     },
+    "10Y Treasury": {
+      "value": "4.21",
+      "change": -0.08
+    },
+    "10Y-2Y Spread": {
+      "value": "0.28",
+      "change": 0.03
+    },
     "30Y Mortgage": {
-      "value": "6.17",
+      "value": "6.76",
       "change": -0.04
     }
   },

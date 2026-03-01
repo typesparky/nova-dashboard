@@ -10,6 +10,7 @@ import {
 } from '../data/mockData';
 import { useFetch, fetchAllNews, fetchFREDSeries, FRED_SERIES, RSS_FEEDS, classifyNewsCategory, TerminalLoader } from '../data/api';
 import { fetchMacroData } from '../data/mockData';
+import EconomicCalendar from './EconomicCalendar';
 
 const CHART_SERIES = Object.keys(macroChartData);
 
@@ -245,7 +246,7 @@ export default function MacroDashboard() {
 
                 </div>
 
-                {/* News Sidebar */}
+                {/* News Sidebar + Calendar */}
                 <div className="w-[340px] border-l border-terminal-border flex flex-col min-h-0">
                     <div className="px-3 py-2 border-b border-terminal-border bg-terminal-card">
                         <div className="flex items-center justify-between mb-2">
@@ -286,7 +287,7 @@ export default function MacroDashboard() {
                             ))}
                         </div>
                     </div>
-                    <div className="flex-1 overflow-y-auto">
+                    <div className="flex-1 overflow-y-auto min-h-0">
                         {newsLoading && !newsData.length ? (
                             <TerminalLoader label="CONNECTING TO NEWS FEEDS" />
                         ) : (
@@ -303,6 +304,11 @@ export default function MacroDashboard() {
                                 : 'No live news — configure RSS proxy'
                             }
                         </span>
+                    </div>
+
+                    {/* Economic Calendar panel — bottom 40% of sidebar */}
+                    <div className="h-[240px] flex-none border-t-2 border-neon-cyan/20 bg-terminal-card/20">
+                        <EconomicCalendar />
                     </div>
                 </div>
             </div>
