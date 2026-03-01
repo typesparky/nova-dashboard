@@ -5,7 +5,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "46.06%",
     "float": "23.39M",
-    "target": "40.75M"
+    "target": "40.75M",
+    "marketCap": "$514.3M",
+    "marketCapRaw": 514325609.19598293,
+    "shortDollarValue": "$236.9M",
+    "shortDollarRaw": 236898375.59566975
   },
   {
     "ticker": "HTZ",
@@ -13,7 +17,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "44.41%",
     "float": "124.38M",
-    "target": "311.59M"
+    "target": "311.59M",
+    "marketCap": "$1.41B",
+    "marketCapRaw": 1414631776.813674,
+    "shortDollarValue": "$628.2M",
+    "shortDollarRaw": 628237972.0829525
   },
   {
     "ticker": "BETR",
@@ -21,7 +29,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "43.93%",
     "float": "4.17M",
-    "target": "9.86M"
+    "target": "9.86M",
+    "marketCap": "$516.4M",
+    "marketCapRaw": 516419414.1511688,
+    "shortDollarValue": "$226.9M",
+    "shortDollarRaw": 226863048.63660848
   },
   {
     "ticker": "MPT",
@@ -29,7 +41,11 @@
     "exchange": "NYSE",
     "shortInterest": "40.06%",
     "float": "494.23M",
-    "target": "601.50M"
+    "target": "601.50M",
+    "marketCap": "$3.46B",
+    "marketCapRaw": 3464640137.6724243,
+    "shortDollarValue": "$1.39B",
+    "shortDollarRaw": 1387934839.1515732
   },
   {
     "ticker": "HIMS",
@@ -37,7 +53,11 @@
     "exchange": "NYSE",
     "shortInterest": "35.71%",
     "float": "206.02M",
-    "target": "219.27M"
+    "target": "219.27M",
+    "marketCap": "$3.31B",
+    "marketCapRaw": 3309670986.6620865,
+    "shortDollarValue": "$1.18B",
+    "shortDollarRaw": 1181883509.3370311
   },
   {
     "ticker": "AI",
@@ -45,7 +65,11 @@
     "exchange": "NYSE",
     "shortInterest": "34.98%",
     "float": "120.90M",
-    "target": "137.25M"
+    "target": "137.25M",
+    "marketCap": "$1.12B",
+    "marketCapRaw": 1118988557.1034422,
+    "shortDollarValue": "$391.4M",
+    "shortDollarRaw": 391422197.274784
   },
   {
     "ticker": "IOVA",
@@ -53,7 +77,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "34.61%",
     "float": "338.65M",
-    "target": "396.97M"
+    "target": "396.97M",
+    "marketCap": "$1.53B",
+    "marketCapRaw": 1532296322.5564027,
+    "shortDollarValue": "$530.3M",
+    "shortDollarRaw": 530327757.236771
   },
   {
     "ticker": "LCID",
@@ -61,7 +89,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "34.10%",
     "float": "130.35M",
-    "target": "324.17M"
+    "target": "324.17M",
+    "marketCap": "$3.24B",
+    "marketCapRaw": 3241684570.0,
+    "shortDollarValue": "$1.11B",
+    "shortDollarRaw": 1105414438.3700001
   },
   {
     "ticker": "PCT",
@@ -69,7 +101,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "32.96%",
     "float": "141.90M",
-    "target": "180.20M"
+    "target": "180.20M",
+    "marketCap": "$1.14B",
+    "marketCapRaw": 1137051515.0889683,
+    "shortDollarValue": "$374.8M",
+    "shortDollarRaw": 374772179.373324
   },
   {
     "ticker": "BOXL",
@@ -77,7 +113,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "32.71%",
     "float": "930K",
-    "target": "950K"
+    "target": "950K",
+    "marketCap": "$1.3M",
+    "marketCapRaw": 1304067.384538889,
+    "shortDollarValue": "$426,560",
+    "shortDollarRaw": 426560.44148267055
   },
   {
     "ticker": "RXRX",
@@ -85,7 +125,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "32.69%",
     "float": "504.41M",
-    "target": "514.19M"
+    "target": "514.19M",
+    "marketCap": "$1.91B",
+    "marketCapRaw": 1913034357.9591923,
+    "shortDollarValue": "$625.4M",
+    "shortDollarRaw": 625370931.6168599
   },
   {
     "ticker": "NVAX",
@@ -93,7 +137,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "32.61%",
     "float": "163.70M",
-    "target": "163.50M"
+    "target": "163.50M",
+    "marketCap": "$1.65B",
+    "marketCapRaw": 1647739865.0896025,
+    "shortDollarValue": "$537.3M",
+    "shortDollarRaw": 537327970.0057194
   },
   {
     "ticker": "SUGP",
@@ -101,7 +149,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "32.46%",
     "float": "500K",
-    "target": "560K"
+    "target": "560K",
+    "marketCap": "$12.1M",
+    "marketCapRaw": 12139904.160819054,
+    "shortDollarValue": "$3.9M",
+    "shortDollarRaw": 3940612.890601865
   },
   {
     "ticker": "SOUN",
@@ -109,7 +161,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "31.74%",
     "float": "379.22M",
-    "target": "387.56M"
+    "target": "387.56M",
+    "marketCap": "$3.61B",
+    "marketCapRaw": 3612824564.853853,
+    "shortDollarValue": "$1.15B",
+    "shortDollarRaw": 1146710516.8846128
   },
   {
     "ticker": "SPHR",
@@ -117,7 +173,11 @@
     "exchange": "NYSE",
     "shortInterest": "29.98%",
     "float": "24.21M",
-    "target": "28.45M"
+    "target": "28.45M",
+    "marketCap": "$4.23B",
+    "marketCapRaw": 4225107377.0407104,
+    "shortDollarValue": "$1.27B",
+    "shortDollarRaw": 1266687191.636805
   },
   {
     "ticker": "MARA",
@@ -125,7 +185,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "28.85%",
     "float": "372.62M",
-    "target": "378.18M"
+    "target": "378.18M",
+    "marketCap": "$3.38B",
+    "marketCapRaw": 3380967957.12753,
+    "shortDollarValue": "$975.4M",
+    "shortDollarRaw": 975409255.6312926
   },
   {
     "ticker": "PLCE",
@@ -133,7 +197,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "28.71%",
     "float": "9.20M",
-    "target": "22.17M"
+    "target": "22.17M",
+    "marketCap": "$88.7M",
+    "marketCapRaw": 88671560.0,
+    "shortDollarValue": "$25.5M",
+    "shortDollarRaw": 25457604.876000002
   },
   {
     "ticker": "SPRY",
@@ -141,7 +209,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "28.70%",
     "float": "70.41M",
-    "target": "98.85M"
+    "target": "98.85M",
+    "marketCap": "$917.3M",
+    "marketCapRaw": 917315083.6845732,
+    "shortDollarValue": "$263.3M",
+    "shortDollarRaw": 263269429.01747248
   },
   {
     "ticker": "ENVX",
@@ -149,7 +221,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "28.63%",
     "float": "186.49M",
-    "target": "215.82M"
+    "target": "215.82M",
+    "marketCap": "$1.15B",
+    "marketCapRaw": 1147081149.508418,
+    "shortDollarValue": "$328.4M",
+    "shortDollarRaw": 328409333.1042601
   },
   {
     "ticker": "ROOT",
@@ -157,7 +233,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "27.37%",
     "float": "8.55M",
-    "target": "13.70M"
+    "target": "13.70M",
+    "marketCap": "$804.6M",
+    "marketCapRaw": 804604913.2453575,
+    "shortDollarValue": "$220.2M",
+    "shortDollarRaw": 220220364.75525436
   },
   {
     "ticker": "CRML",
@@ -165,7 +245,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "27.36%",
     "float": "49.38M",
-    "target": "117.90M"
+    "target": "117.90M",
+    "marketCap": "$1.20B",
+    "marketCapRaw": 1196730670.623001,
+    "shortDollarValue": "$327.4M",
+    "shortDollarRaw": 327425511.4824531
   },
   {
     "ticker": "RILY",
@@ -173,7 +257,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "27.22%",
     "float": "20.68M",
-    "target": "31.22M"
+    "target": "31.22M",
+    "marketCap": "$201.4M",
+    "marketCapRaw": 201360421.99551105,
+    "shortDollarValue": "$54.8M",
+    "shortDollarRaw": 54810306.86717811
   },
   {
     "ticker": "ABSI",
@@ -181,7 +269,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "27.13%",
     "float": "137.64M",
-    "target": "150.37M"
+    "target": "150.37M",
+    "marketCap": "$412.0M",
+    "marketCapRaw": 412017996.3740547,
+    "shortDollarValue": "$111.8M",
+    "shortDollarRaw": 111780482.41628103
   },
   {
     "ticker": "KSS",
@@ -189,7 +281,11 @@
     "exchange": "NYSE",
     "shortInterest": "27.06%",
     "float": "111.08M",
-    "target": "112.19M"
+    "target": "112.19M",
+    "marketCap": "$1.84B",
+    "marketCapRaw": 1836537150.822916,
+    "shortDollarValue": "$497.0M",
+    "shortDollarRaw": 496966953.01268107
   },
   {
     "ticker": "ACHC",
@@ -197,7 +293,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "26.98%",
     "float": "82.34M",
-    "target": "90.44M"
+    "target": "90.44M",
+    "marketCap": "$2.12B",
+    "marketCapRaw": 2120013526.1424465,
+    "shortDollarValue": "$572.0M",
+    "shortDollarRaw": 571979649.353232
   },
   {
     "ticker": "LFVN",
@@ -205,7 +305,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "26.70%",
     "float": "10.46M",
-    "target": "12.79M"
+    "target": "12.79M",
+    "marketCap": "$59.5M",
+    "marketCapRaw": 59489120.57006979,
+    "shortDollarValue": "$15.9M",
+    "shortDollarRaw": 15883595.192208635
   },
   {
     "ticker": "RUN",
@@ -213,7 +317,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "26.69%",
     "float": "212.51M",
-    "target": "232.04M"
+    "target": "232.04M",
+    "marketCap": "$3.07B",
+    "marketCapRaw": 3074554194.5,
+    "shortDollarValue": "$820.6M",
+    "shortDollarRaw": 820598514.51205
   },
   {
     "ticker": "HYPD",
@@ -221,7 +329,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "26.19%",
     "float": "6.43M",
-    "target": "8.17M"
+    "target": "8.17M",
+    "marketCap": "$23.9M",
+    "marketCapRaw": 23892900.634388924,
+    "shortDollarValue": "$6.3M",
+    "shortDollarRaw": 6257550.67614646
   },
   {
     "ticker": "CRDF",
@@ -229,7 +341,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "26.19%",
     "float": "65.73M",
-    "target": "67.36M"
+    "target": "67.36M",
+    "marketCap": "$130.7M",
+    "marketCapRaw": 130679498.01440239,
+    "shortDollarValue": "$34.2M",
+    "shortDollarRaw": 34224960.52997199
   },
   {
     "ticker": "MNPR",
@@ -237,7 +353,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "26.16%",
     "float": "4.73M",
-    "target": "6.68M"
+    "target": "6.68M",
+    "marketCap": "$366.2M",
+    "marketCapRaw": 366239018.1593628,
+    "shortDollarValue": "$95.8M",
+    "shortDollarRaw": 95808127.1504893
   },
   {
     "ticker": "OMER",
@@ -245,7 +365,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "25.85%",
     "float": "63.23M",
-    "target": "70.90M"
+    "target": "70.90M",
+    "marketCap": "$854.4M",
+    "marketCapRaw": 854350544.4731894,
+    "shortDollarValue": "$220.8M",
+    "shortDollarRaw": 220849615.74631944
   },
   {
     "ticker": "EOSE",
@@ -253,7 +377,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "25.64%",
     "float": "299.83M",
-    "target": "324.10M"
+    "target": "324.10M",
+    "marketCap": "$1.85B",
+    "marketCapRaw": 1845739185.0401397,
+    "shortDollarValue": "$473.2M",
+    "shortDollarRaw": 473247527.04429185
   },
   {
     "ticker": "FUN",
@@ -261,7 +389,11 @@
     "exchange": "NYSE",
     "shortInterest": "25.57%",
     "float": "90.20M",
-    "target": "101.47M"
+    "target": "101.47M",
+    "marketCap": "$1.73B",
+    "marketCapRaw": 1728108233.146906,
+    "shortDollarValue": "$441.9M",
+    "shortDollarRaw": 441877275.2156638
   },
   {
     "ticker": "INDI",
@@ -269,7 +401,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "25.53%",
     "float": "199.75M",
-    "target": "202.61M"
+    "target": "202.61M",
+    "marketCap": "$741.6M",
+    "marketCapRaw": 741557203.3702633,
+    "shortDollarValue": "$189.3M",
+    "shortDollarRaw": 189319554.02042824
   },
   {
     "ticker": "KRUS",
@@ -277,7 +413,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "25.49%",
     "float": "6.78M",
-    "target": "11.11M"
+    "target": "11.11M",
+    "marketCap": "$853.0M",
+    "marketCapRaw": 853011399.2361298,
+    "shortDollarValue": "$217.4M",
+    "shortDollarRaw": 217432605.66528943
   },
   {
     "ticker": "PLUG",
@@ -285,7 +425,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "25.18%",
     "float": "1.38B",
-    "target": "1.39B"
+    "target": "1.39B",
+    "marketCap": "$2.49B",
+    "marketCapRaw": 2491027033.6733284,
+    "shortDollarValue": "$627.2M",
+    "shortDollarRaw": 627240607.0789442
   },
   {
     "ticker": "TTEC",
@@ -293,7 +437,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "25.05%",
     "float": "20.14M",
-    "target": "48.55M"
+    "target": "48.55M",
+    "marketCap": "$121.4M",
+    "marketCapRaw": 121374165.0,
+    "shortDollarValue": "$30.4M",
+    "shortDollarRaw": 30404228.3325
   },
   {
     "ticker": "WGS",
@@ -301,7 +449,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "24.94%",
     "float": "14.71M",
-    "target": "28.90M"
+    "target": "28.90M",
+    "marketCap": "$2.30B",
+    "marketCapRaw": 2303984842.4370575,
+    "shortDollarValue": "$574.6M",
+    "shortDollarRaw": 574613819.7038021
   },
   {
     "ticker": "SERV",
@@ -309,7 +461,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "24.88%",
     "float": "62.01M",
-    "target": "74.52M"
+    "target": "74.52M",
+    "marketCap": "$744.4M",
+    "marketCapRaw": 744417989.7745686,
+    "shortDollarValue": "$185.2M",
+    "shortDollarRaw": 185211195.85591266
   },
   {
     "ticker": "EVGO",
@@ -317,7 +473,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "24.64%",
     "float": "127.65M",
-    "target": "135.18M"
+    "target": "135.18M",
+    "marketCap": "$843.9M",
+    "marketCapRaw": 843872691.3571522,
+    "shortDollarValue": "$207.9M",
+    "shortDollarRaw": 207930231.1504023
   },
   {
     "ticker": "AIRS",
@@ -325,7 +485,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "24.41%",
     "float": "17.05M",
-    "target": "62.44M"
+    "target": "62.44M",
+    "marketCap": "$98.6M",
+    "marketCapRaw": 98649941.27949119,
+    "shortDollarValue": "$24.1M",
+    "shortDollarRaw": 24080450.6663238
   },
   {
     "ticker": "BCRX",
@@ -333,7 +497,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "23.96%",
     "float": "195.47M",
-    "target": "248.04M"
+    "target": "248.04M",
+    "marketCap": "$2.19B",
+    "marketCapRaw": 2190650000.0,
+    "shortDollarValue": "$524.9M",
+    "shortDollarRaw": 524879740.0
   },
   {
     "ticker": "ASPI",
@@ -341,7 +509,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "23.85%",
     "float": "88.08M",
-    "target": "125.11M"
+    "target": "125.11M",
+    "marketCap": "$668.1M",
+    "marketCapRaw": 668088070.5702896,
+    "shortDollarValue": "$159.3M",
+    "shortDollarRaw": 159339004.8310141
   },
   {
     "ticker": "PGY",
@@ -349,7 +521,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "23.84%",
     "float": "46.78M",
-    "target": "69.11M"
+    "target": "69.11M",
+    "marketCap": "$899.6M",
+    "marketCapRaw": 899630534.864521,
+    "shortDollarValue": "$214.5M",
+    "shortDollarRaw": 214471919.51170182
   },
   {
     "ticker": "SANA",
@@ -357,7 +533,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "23.76%",
     "float": "156.96M",
-    "target": "266.37M"
+    "target": "266.37M",
+    "marketCap": "$1.12B",
+    "marketCapRaw": 1121401375.361061,
+    "shortDollarValue": "$266.4M",
+    "shortDollarRaw": 266444966.78578812
   },
   {
     "ticker": "BBAI",
@@ -365,7 +545,11 @@
     "exchange": "NYSE",
     "shortInterest": "23.50%",
     "float": "433.34M",
-    "target": "457.89M"
+    "target": "457.89M",
+    "marketCap": "$1.81B",
+    "marketCapRaw": 1813255873.7472277,
+    "shortDollarValue": "$426.1M",
+    "shortDollarRaw": 426115130.3305985
   },
   {
     "ticker": "STOK",
@@ -373,7 +557,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "23.47%",
     "float": "40.85M",
-    "target": "57.12M"
+    "target": "57.12M",
+    "marketCap": "$2.08B",
+    "marketCapRaw": 2079635422.7846146,
+    "shortDollarValue": "$488.1M",
+    "shortDollarRaw": 488090433.727549
   },
   {
     "ticker": "BYRN",
@@ -381,7 +569,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "23.34%",
     "float": "18.48M",
-    "target": "22.37M"
+    "target": "22.37M",
+    "marketCap": "$289.7M",
+    "marketCapRaw": 289738990.6861143,
+    "shortDollarValue": "$67.6M",
+    "shortDollarRaw": 67625080.42613909
   },
   {
     "ticker": "ABCL",
@@ -389,7 +581,11 @@
     "exchange": "Nasdaq",
     "shortInterest": "23.19%",
     "float": "204.33M",
-    "target": "299.34M"
+    "target": "299.34M",
+    "marketCap": "$1.08B",
+    "marketCapRaw": 1080599491.8785038,
+    "shortDollarValue": "$250.6M",
+    "shortDollarRaw": 250591022.16662505
   },
   {
     "ticker": "CRMD",
@@ -397,6 +593,10 @@
     "exchange": "Nasdaq",
     "shortInterest": "22.94%",
     "float": "78.14M",
-    "target": "78.79M"
+    "target": "78.79M",
+    "marketCap": "$561.8M",
+    "marketCapRaw": 561765899.8666906,
+    "shortDollarValue": "$128.9M",
+    "shortDollarRaw": 128869097.42941885
   }
 ]
