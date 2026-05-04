@@ -231,4 +231,5 @@ export const TAB_LABELS = [
   { id: 'options', label: 'OPTIONS', shortcut: 'F5' },
   { id: 'vault', label: 'VAULT', shortcut: 'F6' },
   { id: 'sector', label: 'MOST SHORTED', shortcut: 'F7' },
+  { id: 'quant', label: 'QUANT', shortcut: 'F8' },
 ];

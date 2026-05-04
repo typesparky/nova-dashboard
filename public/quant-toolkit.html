@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quant Toolkit</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #e0e0e6; font-family: 'Inter', sans-serif; padding: 40px; min-height: 100vh; }
+  .header { margin-bottom: 24px; border-bottom: 1px solid #1e1e2e; padding-bottom: 24px; }
+  .header h1 { font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+  .header p { color: #888; margin-top: 6px; font-size: 14px; }
+  
+  .tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 1px solid #1e1e2e; max-width: 1400px; }
+  .tab { padding: 10px 20px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  .tab:hover { color: #aaa; }
+  .tab.active { color: #818cf8; border-bottom-color: #818cf8; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .section-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #555; margin: 32px 0 16px 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; max-width: 1400px; }
+  .card { background: #111118; border: 1px solid #1e1e2e; border-radius: 12px; padding: 20px; transition: border-color 0.2s; position: relative; }
+  .card:hover { border-color: #2a2a40; }
+  .card h2 { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .card .tag { display: inline-block; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 2px 6px; border-radius: 4px; margin-bottom: 10px; }
+  .tag.active { background: #1a2a1a; color: #4ade80; }
+  .tag.backlog { background: #2a1a1a; color: #f87171; }
+  .tag.infra { background: #1a1a2a; color: #818cf8; }
+  .tag.sentiment { background: #2a2a1a; color: #fbbf24; }
+  .tag.macro { background: #1a2a2a; color: #22d3ee; }
+  
+  .card p.desc { font-size: 12px; color: #999; line-height: 1.5; margin-bottom: 12px; }
+  .card .path { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #555; margin-bottom: 10px; cursor: pointer; }
+  .card .path:hover { color: #818cf8; }
+
+  /* Methodology Walkthrough Styles */
+  .walkthrough-container { max-width: 1000px; margin-top: 20px; }
+  .flow-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 40px; }
+  .flow-box { background: #111118; border: 1px solid #1e1e2e; border-radius: 12px; padding: 20px; position: relative; }
+  .flow-box h3 { font-size: 14px; color: #818cf8; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
+  .flow-box p { font-size: 13px; color: #999; line-height: 1.5; }
+  .flow-box .why { margin-top: 10px; font-size: 12px; color: #4ade80; font-weight: 500; }
+  .flow-box::after { content: '→'; position: absolute; right: -15px; top: 50%; transform: translateY(-50%); color: #333; font-size: 20px; }
+  .flow-box:last-child::after { content: ''; }
+
+  .example-card { background: #0a0a0f; border: 1px solid #1e1e2e; border-radius: 12px; padding: 30px; margin-top: 20px; }
+  .example-card h2 { font-size: 18px; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .example-card h2::before { content: '💡'; }
+  .example-step { margin-bottom: 24px; padding-left: 20px; border-left: 2px solid #818cf8; }
+  .example-step b { color: #fff; display: block; margin-bottom: 4px; font-size: 14px; }
+  .example-step span { color: #999; font-size: 13px; }
+  .code { font-family: 'JetBrains Mono', monospace; background: #111118; padding: 4px 8px; border-radius: 4px; color: #e0e0e6; font-size: 12px; }
+  .highlight { color: #818cf8; font-weight: 600; }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⬡ Quant Research Dashboard</h1>
+  <p>Team workflow and systematic research methodology. <a href="/" style="color:#818cf8;text-decoration:none;border-bottom:1px dashed #333;">← Back to Nova Terminal</a></p>
+</div>
+
+<div class="tabs">
+  <div class="tab active" data-tab="toolkit">Toolkit</div>
+  <div class="tab" data-tab="research">Research & Backlog</div>
+  <div class="tab" data-tab="methodology">How We Research</div>
+</div>
+
+<div id="toolkit" class="tab-content active">
+  <div class="section-title">Core Infrastructure</div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag infra">Dashboard</span>
+      <h2>Nova Capital Terminal</h2>
+      <p class="desc">Multi-tab intelligence dashboard: FRED macro, RSS news + sentiment, COT positioning, ETF flows, Options/Institutional/13F, Local Vault, Most Shorted (50+ stocks).</p>
+      <div class="path">~/hermes-workspace/nova-dashboard/</div>
+    </div>
+    <div class="card">
+      <span class="tag infra">Signal</span>
+      <h2>Unified Signal Analyzer</h2>
+      <p class="desc">Core signal testing API. Converts prediction market data into actionable macro trading signals (S&P, BTC, Gold, NASDAQ). PnL calc, forward returns, percentile-based entry, momentum/mean-reversion, ATR trailing stops.</p>
+      <div class="path">~/hermes-workspace/prediction-market-pipeline/</div>
+    </div>
+    <div class="card">
+      <span class="tag infra">Backtest</span>
+      <h2>Enterprise Engine</h2>
+      <p class="desc">Gold standard for validation. Purged K-Fold CV with Embargo, Deflated Sharpe Ratio, Causal Falsification Tests (shuffled/delayed/random/inverted signals), Binomial & Wilcoxon tests.</p>
+      <div class="path">~/hermes-workspace/TradingSystem/enterprise_backtest_engine.py</div>
+    </div>
+    <div class="card">
+      <span class="tag infra">Backtest</span>
+      <h2>Degenclaw Backtest Suite</h2>
+      <p class="desc">Most iterated framework. V2/V3 spread backtests with full cost model (bid-ask, slippage, fees, Roll estimator). Walk-forward (5d/3d), basket, multi-asset, z-score, parameter optimization.</p>
+      <div class="path">~/hermes-workspace/degenclaw-trading/</div>
+    </div>
+    <div class="card">
+      <span class="tag infra">Backtest</span>
+      <h2>AutoResearch Agent Swarm</h2>
+      <p class="desc">Multi-agent quant research system. Production walk-forward analysis, OOS testing, multi-regime support, statistical significance checks, live trading engine integration.</p>
+      <div class="path">~/hermes-workspace/autoresearch-quant-agent-swarm/</div>
+    </div>
+    <div class="card">
+      <span class="tag infra">System</span>
+      <h2>Decile Portfolios</h2>
+      <p class="desc">Universal factor sorting framework for cross-sectional alpha identification. Rank any universe into deciles, track decile returns, test monotonic relationships.</p>
+    </div>
+    <div class="card">
+      <span class="tag infra">System</span>
+      <h2>Ranking & Rank Tests</h2>
+      <p class="desc">Statistical significance of factor monotonic relationships. Cross-sectional percentile, Spearman rank correlation, Information Ratio, monotonicity tests.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Documentation</div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag infra">Guide</span>
+      <h2>Quant Research Guide</h2>
+      <p class="desc">Full pipeline methodology: hypothesis formation, data hygiene, signal building, backtesting (walk-forward, purged CV, DSR), statistical validation (falsification tests, binomial, Wilcoxon), position sizing, paper trading to live. Includes pre-flight checklist.</p>
+      <div class="path">~/projects/quant-research-guide.md</div>
+    </div>
+    <div class="card">
+      <span class="tag infra">Research</span>
+      <h2>Lead-Lag Thesis</h2>
+      <p class="desc">PM-HL lead-lag study. Granger causality, VAR, Transfer Entropy, Markov Switching, Bootstrap, Walk-Forward. Finding: HL leads PM for crypto (GC HL→PM p=0.003).</p>
+      <div class="path">~/projects/prediction-market/lead_lag_thesis.py</div>
+    </div>
+  </div>
+</div>
+
+<div id="research" class="tab-content">
+  <div class="section-title">Active Development</div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag active">Strategy</span>
+      <h2>Lead-Lag (HL → PM)</h2>
+      <p class="desc">Front-running prediction markets using perp exchange moves. Exploit the lead-lag asymmetry where perp exchanges lead PM for crypto price-level markets.</p>
+    </div>
+    <div class="card">
+      <span class="tag active">Strategy</span>
+      <h2>Betting Against the Crowd</h2>
+      <p class="desc">Arbitraging PM probability vs independent analytical scoring. Size by gap magnitude. Calibration check: does 70% PM prob → 70% actual?</p>
+    </div>
+    <div class="card">
+      <span class="tag active">Strategy</span>
+      <h2>Momentum on Dips</h2>
+      <p class="desc">Trading the "cold" momentum factors before they rotate hot. Buy momentum factors when performing badly (below 21d MA), sell when overheated (above 21d MA).</p>
+    </div>
+  </div>
+
+  <div class="section-title">Signals & Alpha Backlog</div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag backlog">Macro</span>
+      <h2>Macro Variable Signals</h2>
+      <p class="desc">Z-score normalization of CPI, NFP, and rates change rates. Focus on change rates not levels. Lagged effect: macro impacts markets over weeks, not days.</p>
+    </div>
+    <div class="card">
+      <span class="tag backlog">Momentum</span>
+      <h2>Factor Momentum</h2>
+      <p class="desc">Time-series vs cross-sectional momentum deep dive. Test timeframes (21d, 63d, 252d), ranking methods, regime sensitivity. Momentum crashes: what predicts them?</p>
+    </div>
+    <div class="card">
+      <span class="tag backlog">Event</span>
+      <h2>Earnings Surprise & Magnitude</h2>
+      <p class="desc">Not just beat/miss but by HOW MUCH. Surprise % = (Actual - Consensus) / |Consensus|. Decile sort by magnitude. Post-earnings drift strongest in +3 to +10 day window.</p>
+    </div>
+    <div class="card">
+      <span class="tag backlog">Equity</span>
+      <h2>Short Squeezer Testing</h2>
+      <p class="desc">Filter Nova's "Most Shorted" (50+ stocks) by SI >20% + volume >2x 20d avg. Hold 1-5 days. Market cap sweet spot $1B-10B. Hard stop at -15%.</p>
+    </div>
+    <div class="card">
+      <span class="tag backlog">Option</span>
+      <h2>Options Data Signals</h2>
+      <p class="desc">Put/call ratio extremes, Open Interest changes, IV/HV ratio, unusual options activity (large block trades, OI spikes). Extract predictive info from positioning, not just IV.</p>
+    </div>
+    <div class="card">
+      <span class="tag backlog">Macro</span>
+      <h2>Polymarket Odds as Signals</h2>
+      <p class="desc">Convert PM rate/geopolitics odds to TradFi exposures. Geopolitics → Gold/Oil/Defense. Rate markets → Treasuries/REITs/Financials. Crypto markets → BTC/ETH correlation.</p>
+    </div>
+  </div>
+
+  <div class="section-title">Alternative & Sentiment Backlog</div>
+  <div class="grid">
+    <div class="card">
+      <span class="tag sentiment">NLP</span>
+      <h2>AI News Extraction (Hynix Method)</h2>
+      <p class="desc">NER to count company mentions from news. Percentile rank vs 252-day rolling baseline. Signal: mention count >90th percentile. Refinement: positive vs negative sentiment.</p>
+    </div>
+    <div class="card">
+      <span class="tag sentiment">Sentiment</span>
+      <h2>Countertrading Pundits</h2>
+      <p class="desc">Systematic fade of high-conviction calls from Trump (energy/trade), Cramer (7-day fade performance), Pelosi (Congress trading data). Detect sentiment shift, not single call.</p>
+    </div>
+    <div class="card">
+      <span class="tag sentiment">Sentiment</span>
+      <h2>Twitter Mentions & Google Trends</h2>
+      <p class="desc">Mention count growth rate (not absolute), sentiment scoring, divergence detection (high mentions + flat price = brewing move). Google Trends z-score vs 52-week avg. Searches spike 1-3 days before price.</p>
+    </div>
+    <div class="card">
+      <span class="tag sentiment">Alt Data</span>
+      <h2>Live Military Action Feeds</h2>
+      <p class="desc">Geopolitical risk as a tradable signal. Intensity scoring: skirmish vs full-scale. Trade: crude oil, nat gas, defense ETFs, gold, USD. Latency arbitrage: minutes matter for oil futures.</p>
+    </div>
+    <div class="card">
+      <span class="tag backlog">Data</span>
+      <h2>Government Contracts (SEC Filings)</h2>
+      <p class="desc">Parse 10-K/Q filings for government contract disclosures. NLP extraction: contract values, agency (DoD, DOE, NASA), duration. Source: SEC EDGAR, USAspending.gov API.</p>
+    </div>
+    <div class="card">
+      <span class="tag macro">Macro</span>
+      <h2>Central Bank Reserves as %</h2>
+      <p class="desc">Gold reserves as % of total (IMF COFER data). Currency diversification: USD, EUR, CNY, JPY weightings. Leading vs lagging indicator for gold price. EM central bank accumulation patterns.</p>
+    </div>
+    <div class="card">
+      <span class="tag macro">Macro</span>
+      <h2>Frequency of Big Releases</h2>
+      <p class="desc">Event density matters. Count CPI, NFP, FOMC, GDP releases per week. Heavy weeks = signal dilution. Focus weeks with 0-1 major releases = clearer signal. Pre vs post-release volatility regimes.</p>
+    </div>
+    <div class="card">
+      <span class="tag backlog">Methodology</span>
+      <h2>Rigorous Backtesting Framework</h2>
+      <p class="desc">Every signal tested against the enterprise engine. Walk-forward (70/30), purged K-Fold with Embargo, Deflated Sharpe Ratio, falsification tests (shuffled/delayed/random/inverted), full cost model. No strategy goes live without passing.</p>
+    </div>
+    <div class="card">
+      <span class="tag backlog">Infra</span>
+      <h2>Unified Dashboard Integration</h2>
+      <p class="desc">Bring all data sources into Nova. API endpoints for macro, COT, options, short interest, news. Signal overlay on price charts. Backtest tab. Alert system for threshold breaches.</p>
+    </div>
+  </div>
+</div>
+
+<div id="methodology" class="tab-content">
+  <div class="walkthrough-container">
+    <div class="section-title" style="margin-top: 0;">The Systematic Research Flow</div>
+    
+    <div class="flow-row">
+      <div class="flow-box">
+        <h3>1. Raw Data</h3>
+        <p>Polymarket trade feeds, 1m Binance candles, FRED macro releases.</p>
+        <div class="why">Why: We start with raw objective reality, no bias.</div>
+      </div>
+      <div class="flow-box">
+        <h3>2. Transformation</h3>
+        <p>Cleaning, resampling to hourly, calculating log returns or prob deltas.</p>
+        <div class="why">Why: Stationary data avoids "fake" correlations.</div>
+      </div>
+      <div class="flow-box">
+        <h3>3. Feature</h3>
+        <p>The "Signal". e.g. 21-day rolling Z-score of sentiment velocity.</p>
+        <div class="why">Why: Isolates the specific pattern we bet on.</div>
+      </div>
+      <div class="flow-box">
+        <h3>4. Testing</h3>
+        <p>Walk-forward OOS, purged K-fold, and transaction cost modeling.</p>
+        <div class="why">Why: Prove it survives reality before losing capital.</div>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <h2>Example 1: "Geopolitical Fear Lead" (Polymarket)</h2>
+      
+      <div class="example-step">
+        <b>Data:</b>
+        <span>Fetch raw <span class="code">outcomePrice</span> history for "Israel-Iran ceasefire" on Polymarket.</span>
+      </div>
+
+      <div class="example-step">
+        <b>Transformation:</b>
+        <span>Calculate 24h change in probability. <span class="code">prob_delta = p[t] - p[t-24h]</span>.</span>
+      </div>
+
+      <div class="example-step">
+        <b>Feature (The Signal):</b>
+        <span>If <span class="code">prob_delta < -0.15</span> (Fear Spike), create a <span class="code">Signal = 1</span> (Buy Gold).</span>
+      </div>
+
+      <div class="example-step">
+        <b>Testing & Trading:</b>
+        <span>Backtest: "If Fear Spike, buy Gold at next Open and hold for 48h." <br>
+        Apply 5bps fees. If Sharpe > 1.2 and Win Rate > 55% in Out-of-Sample, we trade.</span>
+      </div>
+    </div>
+
+    <div class="example-card" style="margin-top: 40px;">
+      <h2>Example 2: "Recession Momentum" (Macro Release)</h2>
+      
+      <div class="example-step">
+        <b>Data:</b>
+        <span>Monthly Unemployment Rate (FRED: UNRATE). <br>
+        <small style="color:#666">Problem: Raw unemployment is highly non-stationary (it has long trends).</small></span>
+      </div>
+
+      <div class="example-step">
+        <b>Transformation (Ensuring Stationarity):</b>
+        <span>Calculate the <span class="highlight">12-month Change</span> in the rate. <br>
+        <span class="code">unrate_diff = UNRATE[t] - UNRATE[t-12]</span>. <br>
+        <small style="color:#666">This removes the level bias and focuses on the *acceleration* of job loss.</small></span>
+      </div>
+
+      <div class="example-step">
+        <b>Feature (The Signal):</b>
+        <span>Z-score the difference over a 5-year rolling window. <br>
+        <span class="code">Signal = (unrate_diff - Mean) / StdDev</span>. <br>
+        If <span class="code">Signal > 2.0</span>, it indicates a statistically significant labor market breakdown.</span>
+      </div>
+
+      <div class="example-step">
+        <b>Testing & Trading:</b>
+        <span>Backtest: "If Unemployment Z > 2.0, Rotate 100% Equity into 10-Year Treasuries (TLT)." <br>
+        <b>Why:</b> We use stationarity to ensure we aren't fooled by "normal" unemployment levels, but instead react to the *regime shift* from growth to recession.</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Click to copy path
+document.querySelectorAll('.path').forEach(el => {
+  el.addEventListener('click', () => {
+    navigator.clipboard.writeText(el.textContent.replace(/^~\//, '/Users/robertalexandrou/'));
+    el.style.color = '#4ade80';
+    setTimeout(() => el.style.color = '#555', 600);
+  });
+});
+
+// Tab logic
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab, .tab-content').forEach(el => el.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

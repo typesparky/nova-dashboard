@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   Activity, Radio, Zap, Clock, Wifi,
   BarChart3, Newspaper, PieChart, ArrowLeftRight,
-  UserCheck, FolderOpen, ChevronRight, Target
+  UserCheck, FolderOpen, ChevronRight, Target, FlaskConical
 } from 'lucide-react';
 import { TAB_LABELS } from './data/mockData';
 import MacroDashboard from './components/MacroDashboard';
@@ -12,6 +12,7 @@ import EtfFlows from './components/EtfFlows';
 import NasdaqOptions from './components/NasdaqOptions';
 import LocalVault from './components/LocalVault';
 import SectorOverview from './components/SectorOverview';
+import QuantToolkit from './components/QuantToolkit';
 
 const TAB_ICONS = {
   macro: BarChart3,
@@ -21,6 +22,7 @@ const TAB_ICONS = {
   options: Zap,
   vault: FolderOpen,
   sector: Target,
+  quant: FlaskConical,
 };
 
 const TAB_COMPONENTS = {
@@ -31,6 +33,7 @@ const TAB_COMPONENTS = {
   options: NasdaqOptions,
   vault: LocalVault,
   sector: SectorOverview,
+  quant: QuantToolkit,
 };
 
 function useClock() {
@@ -121,7 +124,7 @@ export default function App() {
   // Keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key >= 'F1' && e.key <= 'F7') {
+      if (e.key >= 'F1' && e.key <= 'F8') {
         e.preventDefault();
         const idx = parseInt(e.key.slice(1)) - 1;
         if (TAB_LABELS[idx]) {
@@ -196,7 +199,7 @@ export default function App() {
           <span>Latency: 12ms</span>
         </div>
         <div className="flex items-center gap-4">
-          <span>F1-F6: Switch Tabs</span>
+          <span>F1-F8: Switch Tabs</span>
           <span>|</span>
           <span>© 2024 Nova Capital</span>
         </div>
