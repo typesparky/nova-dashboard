@@ -59,9 +59,9 @@ function Header({ time }) {
         </div>
         <span className="text-text-muted text-[10px]">|</span>
         <span className="text-text-secondary text-[10px] uppercase tracking-widest">Nova Capital Terminal v1.0</span>
-        <a href="/nova/quant-toolkit.html" className="ml-4 px-3 py-1 text-[10px] font-bold bg-neon-purple/20 text-neon-purple border border-neon-purple/50 rounded hover:bg-neon-purple/30 transition-colors flex items-center gap-1">
-          <FlaskConical size={10} />
-          <span>QUANT TEAM</span>
+        <a href="/nova/quant-toolkit.html" className="ml-6 px-5 py-2 text-xs font-bold bg-neon-purple text-white border-2 border-neon-purple rounded-lg hover:bg-neon-purple/80 hover:scale-105 hover:shadow-lg hover:shadow-neon-purple/50 transition-all duration-200 flex items-center gap-2 animate-pulse">
+          <FlaskConical size={16} />
+          <span>QUANT TEAM PORTAL</span>
         </a>
       </div>
 
