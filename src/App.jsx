@@ -59,6 +59,10 @@ function Header({ time }) {
         </div>
         <span className="text-text-muted text-[10px]">|</span>
         <span className="text-text-secondary text-[10px] uppercase tracking-widest">Nova Capital Terminal v1.0</span>
+        <a href="/nova/quant-toolkit.html" className="ml-4 px-3 py-1 text-[10px] font-bold bg-neon-purple/20 text-neon-purple border border-neon-purple/50 rounded hover:bg-neon-purple/30 transition-colors flex items-center gap-1">
+          <FlaskConical size={10} />
+          <span>QUANT TEAM</span>
+        </a>
       </div>
 
       {/* Center: Market Status */}
